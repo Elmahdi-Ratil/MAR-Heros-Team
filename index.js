@@ -391,20 +391,20 @@ client.on("message", message => {
  +[ ---------------------------- ]+
    **Administrationr Commands**
  +[ ---------------------------- ]+
- %ban    <member> <reason>   | For Ban A Member
- %kick   <member> <reason>   | For Kick A Member
- %mute   <member> <reason>   | For Mute A Member
- %unmute <member>            | For Unmute A Member
- %bc1                        | For Do BroadCast
- %clear  <number>            | For Clear Chat With Number Of Message
- %warn   <member> <reason>   | For Give A Warn To Member
+ +ban    <member> <reason>   | For Ban A Member
+ +kick   <member> <reason>   | For Kick A Member
+ +mute   <member> <reason>   | For Mute A Member
+ +unmute <member>            | For Unmute A Member
+ +bc1                        | For Do BroadCast
+ +clear  <number>            | For Clear Chat With Number Of Message
+ +warn   <member> <reason>   | For Give A Warn To Member
  +[ ---------------------------- ]+
          **General  Commands**
  +[ ---------------------------- ]+
- %help                       | For Sent This Message
- %report <member> <reasen>   | For Report A Member
- %server                     | For See Server Stats
- %members                    | For See Members Stats
+ +help                       | For Sent This Message
+ +report <member> <reasen>   | For Report A Member
+ +server                     | For See Server Stats
+ +members                    | For See Members Stats
  `)
  message.author.send(embed);
 }  
