@@ -1,34 +1,28 @@
 {
-  "name": "plustest",
-  "description": "plustest",
-  "version": "2.0.0",
-  "main": "index.js",
+  "name": "gboty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/then/fs.git"
+    "url": "git+https://github.com/shadow0o0/gboty.git"
   },
-  "keywords": [
-    "promise",
-    "then",
-    "fs",
-    "core"
-  ],
-  "author": "Nathan Zadoks",
+  "author": "GarZ",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/then/fs/issues"
+    "url": "https://github.com/shadow0o0/gboty/issues"
   },
-  "devDependencies": {
-    "bash-color": "0.0.3"
-  },
+  "homepage": "https://github.com/shadow0o0/gboty#readme",
   "dependencies": {
-
-"discord.js": "11.1.0",
-    "dateformat": "3.0.3"
-
+    "dateformat": "^3.0.3",
+    "discord.js": "^11.3.2"
     
   }
 }
