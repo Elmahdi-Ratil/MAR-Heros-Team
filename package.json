@@ -1,28 +1,16 @@
+
 {
-  "name": "gboty",
+  "name": "mar-heros-team
+",
   "version": "1.0.0",
   "description": "",
-  "main": "node index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "8.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shadow0o0/gboty.git"
-  },
-  "author": "GarZ",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shadow0o0/gboty/issues"
-  },
-  "homepage": "https://github.com/shadow0o0/gboty#readme",
+  "author": "heros4",
+  "license": "ISC",
   "dependencies": {
-    "dateformat": "^3.0.3",
     "discord.js": "^11.3.2"
-    
   }
 }
