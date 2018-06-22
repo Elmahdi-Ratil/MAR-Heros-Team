@@ -4,7 +4,7 @@ const prefix = '+'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Mido King | +help`,"http://twitch.tv/S-F")
+client.user.setGame(`Mido King | +help`,"https://youtu.be/qdfP7jzpvZ8")
   console.log('')
   console.log('')
   console.log('+[-----------------------------------------------------------------]+')
