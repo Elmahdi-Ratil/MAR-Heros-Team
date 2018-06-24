@@ -615,7 +615,7 @@ const secreT = [
 
 
  client.on('message', message => {
-   if (message.content.startsWith("خواطر")) {
+   if (message.content.startsWith(prefix + "خواطر")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
