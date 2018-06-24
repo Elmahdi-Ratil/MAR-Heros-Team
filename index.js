@@ -563,34 +563,23 @@ const codes = {
   };
   });
 
- const superagent = require('superagent');
-
-client.on('message' , async (message) => {
-       if(message.content.startsWith(prefix + "meme")) {
-
-  let{body} = await superagent
-  .get(`https://api-to.get-a.life/meme`);
-
-  let me = new Discord.RichEmbed()
-  .setColor("#7289DA")
-  .setTitle(".-,")
-  .setImage(body.url);
-
-  message.channel.send(me);
+client.on('message', message => {
+            if (message.content.startsWith(prefix + "قوانين")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **اولا** ' ,' **ممنوع السب** ')
+.addField('     **ثانيا** ' ,' **لا تسوي سبام ** ')
+.addField('     **ثالثا** ' ,' **لا تزعج الاخرين** ')
+.addField('    **رابعا**' ,' **ممنوع الاعلانات** ')
+.addField('    **خامسا**' ,' **احترم الاخرين** ')
+.addField('    **سادسا**' ,' **لا تنشر في الشات او بل خاص** ')
+.addField('    **سابعا**' ,' **لا تنشر روابط!** ')
+.addField('    **ثامنا**' ,' **لا تسوي سبام ايموجي** ')
+.addField('    **تاسعا**' ,' **لا تطلب رتبه الاداره !** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
     }
-    });
-  
-  client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
 });
-         client.on('message', message => {
-            if (message.content === 'hi') {
-              message.channel.send('Welcome :heart: ');
-              message.channel.sendFile("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8KNSG9XDY6qOJ8G8IRcLiIUDD-dCY7wCzKwIs8Idi5Y55qOxGgg");
-               
-
-            }
-}); 
 
 
 
