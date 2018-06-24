@@ -628,7 +628,58 @@ const secreT = [
     }
 });
   
+client.on('message', message => {
+    
+    if (message.content === (prefix + "emoji")) {
+        setInterval(function(){
+        message.edit('😂') 
+        message.edit('🙉')   
+        message.edit('🔥')
+        message.edit('😠')
+        message.edit('🔥 🌶')
+        message.edit('🙃')
+        message.edit('☠')
+        message.edit('✨')
+        message.edit('😐')
+        message.edit('😍')
+        message.edit('❤')
+        message.edit('👌:skin-tone-2:')
+        message.edit('🌚')
+        message.edit('🌹')
+        message.edit('😒')
+        message.edit('🐸')
+        message.edit('🍉')
+        message.edit('🚨')
+        message.edit('😱')
+        message.edit('😡')        
+        message.edit('🤑')
+        message.edit('😖')
+        message.edit('😚')
+        message.edit('🕊')
+        message.edit('☄')
+           message.edit('🐶')
+        message.edit('🚜')    
+        message.edit('🍫')
+        message.edit('👇:skin-tone-2:')
+        message.edit('🕹')
+        message.edit('🌌 ')
+        message.edit('💋 ')
+           message.edit('🤸')
+        message.edit('🙍:skin-tone-2:')    
+        message.edit('😦')
+        message.edit('👈:skin-tone-2:')
+        message.edit('💓')
+        message.edit('☺')
+        message.edit('💗')
+        message.edit('🌸')
 
+
+        
+        
+        }, 1000)
+    }
+    
+})
 
 
 
