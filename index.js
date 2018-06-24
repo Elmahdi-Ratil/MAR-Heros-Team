@@ -581,7 +581,23 @@ client.on('message', message => {
     }
 });
 
+ client.on('message' , async (message) => {
+       if(message.content.startsWith(prefix + "r")) {
+  const emoji = "1⃣"
+message.channel.send('**اضغط على1⃣ للحصول على رتبه **')
+.then( msg => {
+msg.react(emoji).then( r => {
+  const mis = (reaction, user) => reaction.emoji.name === emoji && user.id === message.author.id;
+  const swe = msg.createReactionCollector(mis, { time: 10000 });
+  swe.on('collect', r => {
 
+let role = message.guild.roles.find("name", "أسم الرتبة");
+message.guild.member(message.author).addRole(role);
+});
+});
+});
+}
+});
 
 
 
