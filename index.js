@@ -671,7 +671,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    if(message.content == ('-هويتي')) {    
+    if(message.content.startsWith('-هويتي')) {    
  
              if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
             var Canvas = module.require('canvas');
