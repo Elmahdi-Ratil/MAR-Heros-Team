@@ -30,11 +30,11 @@ client.on('message', message => {
 });
 
 client.on('voiceStateUpdate', (o, n) => {
-        let newUserChannel = n.voiceChannel
-    let oldUserChannel = o.voiceChannel
+        let newUserChannel = n.voiceChannel.get("461642960073654283");
+    let oldUserChannel = o.voiceChannel.get("461642960073654283");
 
     var channel = client.channels.get("461643051459149834");
-        let cha = n.guild.channels.get("461642960073654283");
+        let cha = n.guild.channels.get("461643051459149834");
         
           let mute1 = o.serverMute;
   let mute2 = n.serverMute;
@@ -55,7 +55,7 @@ client.on('voiceStateUpdate', (o, n) => {
 
 client.on('message', function(msg) {
     const prefix = '!'
-    if(msg.content.startsWith (prefix  + 'server')) {
+    if(msg.content.startsWith (prefix  + 'server')) {   
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
