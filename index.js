@@ -29,22 +29,29 @@ client.on('message', message => {
     }
 });
 
-var prefix = "!"
-client.on('message', message => {
+client.on('voiceStateUpdate', (o, n) => {
+        let newUserChannel = n.voiceChannel
+    let oldUserChannel = o.voiceChannel
 
-  if (message.content.startsWith( prefix + "sug")) {
-  if (!message.channel.guild) return;
-  let args = message.content.split(" ").slice(1).join(' ');
-  client.channels.get("391613029655117824").send(
-      "\n" + "**" + "● https://discord.gg/7NsEBb :" + "**" +
-      "\n" + "**" + "» " + message.guild.name + "**" +
-      "\n" + "**" + " ● ! Mido king.Heros : " + "**" +
-      "\n" + "**" + "» " + message.author.tag + "**" +
-      "\n" + "**" + " ● https://discord.gg/7NsEBb : " + "**" +
-      "\n" + "**" + args + "**")
-  }
-  });
+    var channel = client.channels.get("461643051459149834");
+        let cha = n.guild.channels.get("461642960073654283");
+        
+          let mute1 = o.serverMute;
+  let mute2 = n.serverMute;
+  
 
+  let deafen1 = o.serverDeaf;
+  let deafen2 = n.serverDeaf;
+
+    if(mute1 === false && mute2 === true) return;
+    if(mute1 === true && mute2 === false) return;
+    if(deafen1 === false && deafen2 === true) return;
+    if(deafen1 === true && deafen2 === false) return;
+    
+
+    channel.send(`Join Room ${n.displayName}`)
+
+})
 
 client.on('message', function(msg) {
     const prefix = '!'
