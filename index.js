@@ -30,7 +30,7 @@ client.on('message', message => {
 });
 
 client.on('voiceStateUpdate', (o, n) => {
-        let newUserChannel = n.voiceChannel.get("461642960073654283");
+        let newUserChannel = n.voiceChannel
     let oldUserChannel = o.voiceChannel
 
     var channel = client.channels.get("461643051459149834");
