@@ -745,11 +745,11 @@ member.guild.channels.find('id', welc[member.guild.id].imgwelc).sendFile(canvas.
 
 });
 
-
 client.on('message', message => {
-    if (message.content === "+serooms") {
+    if (message.content === "+createroles") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
-            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
+            if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_ROLES`` **Premission**`);
+
 
         
      message.guild.createChannel('「 O W N E R 」', 'voice')
