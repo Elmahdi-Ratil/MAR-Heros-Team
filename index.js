@@ -35,12 +35,12 @@ client.on('message', message => {
   if (message.content.startsWith( prefix + "sug")) {
   if (!message.channel.guild) return;
   let args = message.content.split(" ").slice(1).join(' ');
-  client.channels.get("ايدي الروم").send(
-      "\n" + "**" + "● السيرفر :" + "**" +
+  client.channels.get("391613029655117824").send(
+      "\n" + "**" + "● https://discord.gg/7NsEBb :" + "**" +
       "\n" + "**" + "» " + message.guild.name + "**" +
-      "\n" + "**" + " ● المرسل : " + "**" +
+      "\n" + "**" + " ● ! Mido king.Heros : " + "**" +
       "\n" + "**" + "» " + message.author.tag + "**" +
-      "\n" + "**" + " ● الرسالة : " + "**" +
+      "\n" + "**" + " ● https://discord.gg/7NsEBb : " + "**" +
       "\n" + "**" + args + "**")
   }
   });
