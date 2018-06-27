@@ -20,7 +20,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     var prefix = "!"
-    if (message.content === prefix + "date") {
+    if (message.content === prefix + "data") {
         var currentTime = new Date(),
             السنة = currentTime.getFullYear(),
             الشهر = currentTime.getMonth() + 1,
