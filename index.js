@@ -9,7 +9,7 @@ client.on('ready', function() {
 });
 
 client.on('message', message => {
-    if(message.content == ('idd')) {    
+     if (message.content === prefix +"idd")
  
              if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
             var Canvas = module.require('canvas');
