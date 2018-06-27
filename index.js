@@ -18,6 +18,17 @@ client.on('message', message => {
     }
 });
 
+client.on('message', message => {
+    var prefix = "!"
+    if (message.content === prefix + "date") {
+        var currentTime = new Date(),
+            السنة = currentTime.getFullYear(),
+            الشهر = currentTime.getMonth() + 1,
+            اليوم = currentTime.getDate();
+        message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
+    }
+});
+
 client.on('message',function(message) {
     let channel = client.channels.get('447122598732759040');
    if(message.content === "Help" || "help") {
