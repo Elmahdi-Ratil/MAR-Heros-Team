@@ -28,7 +28,6 @@ client.on('message', message => {
         message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
     }
 });
-
 client.on('voiceStateUpdate', (o, n) => {
         let newUserChannel = n.voiceChannel
     let oldUserChannel = o.voiceChannel
@@ -52,6 +51,7 @@ client.on('voiceStateUpdate', (o, n) => {
     channel.send(Join Room ${n.displayName})
 
 })
+
 
 
 
