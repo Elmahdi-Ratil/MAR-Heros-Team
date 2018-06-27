@@ -29,14 +29,7 @@ client.on('message', message => {
     }
 });
 
-client.on('message',function(message) {
-    let channel = client.channels.get('447122598732759040');
-   if(message.content === "Help" || "help") {
-       message.channel.send("- Someone of the support team will come and help you!, Hold on.").then(() => {
-           channel.send(**- ${message.author} needs help!);
-       });
-   }
-});
+
 
 client.on('message', function(msg) {
     const prefix = '!'
