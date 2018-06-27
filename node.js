@@ -28,16 +28,18 @@ client.on('message', message => {
         message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
     }
 });
+
+
 client.on('voiceStateUpdate', (o, n) => {
         let newUserChannel = n.voiceChannel
     let oldUserChannel = o.voiceChannel
 
     var channel = client.channels.get("461643051459149834");
         let cha = n.guild.channels.get("461642960073654283");
-
+        
           let mute1 = o.serverMute;
   let mute2 = n.serverMute;
-
+  
 
   let deafen1 = o.serverDeaf;
   let deafen2 = n.serverDeaf;
@@ -46,13 +48,11 @@ client.on('voiceStateUpdate', (o, n) => {
     if(mute1 === true && mute2 === false) return;
     if(deafen1 === false && deafen2 === true) return;
     if(deafen1 === true && deafen2 === false) return;
+    
 
-
-    channel.send(Join Room ${n.displayName})
+    channel.send(`Join Room ${n.displayName}`)
 
 })
-
-
 
 
 
