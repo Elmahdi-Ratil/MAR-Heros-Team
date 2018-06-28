@@ -3,10 +3,19 @@ const client = new Discord.Client();
 const prefix = '!'
 
 
+
+
+
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
-    client.user.setGame(prefix + 'Mido King ||');
+    client.user.setGame('Mido King');
 });
+
+
+
+
+
+
 
 
 client.on('message', message => {
@@ -18,6 +27,11 @@ client.on('message', message => {
     }
 });
 
+
+
+
+
+
 client.on('message', message => {
     var prefix = "!"
     if (message.content === prefix + "data") {
@@ -28,6 +42,8 @@ client.on('message', message => {
         message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
     }
 });
+
+
 
 
 
@@ -47,6 +63,9 @@ if (message.member.voiceChannel == null) return message.channel.send(`**الرج
 
  }
    });
+
+
+
 
 
 
@@ -70,6 +89,11 @@ client.on('message', function(msg) {
     }
   });
  
+
+
+
+
+
 
 
 client.on('message',function(message) {
@@ -103,7 +127,7 @@ client.on('guildMemberAdd', member => {
                
                   .addField("Name:",`<@` + `${member.id}` + `>`, true)
                      
-                                     .addField(' server', `${member.guild.name}`,true)
+                    .addField(' server', `${member.guild.name}`,true)
                                        
      .setFooter("**THE ATLANTIC**")
         .setTimestamp()
@@ -111,7 +135,11 @@ client.on('guildMemberAdd', member => {
       channel.sendEmbed(embed);
     });
 
-	
+
+
+
+
+
 
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
@@ -121,6 +149,8 @@ client.on('message', message => {
     return message.reply(`** no advs last chance ! **`)
     }
 });
+
+
 
 
 
@@ -148,6 +178,12 @@ return;
 });
 
 
+
+
+
+
+
+
 client.on('message',function(message) {
   if (message.author.bot) return;
 
@@ -170,8 +206,13 @@ client.on('message',function(message) {
       }); 
 
 
+
+
+
+
+
 client.on('message', message => {
-   if (message.content.startsWith("=idd")) {
+   if (message.content === prefix + "id") {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
 
                var mentionned = message.mentions.users.first();
@@ -196,9 +237,12 @@ client.on('message', message => {
     }
 });
 	  
+
+
+
 	  
-	const devs = ['348555232529219585'];
-const adminprefix = "+";
+	const devs = ['378293431593598986'];
+const adminprefix = "!";
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!devs.includes(message.author.id)) return;
@@ -223,6 +267,8 @@ client.on('message', message => {
 	  
 	  
 
+
+
 	  
 client.on('message', message => {
     if (message.author.id === client.user.id) return;
@@ -233,6 +279,9 @@ client.on('message', message => {
 
 	  
 	  
+
+
+
 client.on('message',function(message) {
     let toKick = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
@@ -255,6 +304,9 @@ client.on('message',function(message) {
        )
        }
 });
+
+
+
 
 	  
 	 
@@ -288,12 +340,14 @@ client.on("message", function(message) {
 	  
 
 
+
+
 client.on("message", message => {
   if (message.author.bot) return;
   
   let command = message.content.split(" ")[0];
   
-  if (command === "+mute") {
+  if (command === "!mute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** I Dont Have Permission 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mute-log','time');
@@ -321,12 +375,16 @@ return message.reply("**:white_check_mark: .. Member Was Muted**").catch(console
 };
 
 });
+
+
+
+
 client.on("message", message => {
   if (message.author.bot) return;
   
   let command = message.content.split(" ")[0];
   
-  if (command === "+unmute") {
+  if (command === "!unmute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** I Dont Have Permission 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mute-log');
@@ -356,6 +414,9 @@ return message.reply("**:white_check_mark: .. Member Was UnMuted **").catch(cons
 
 
 
+
+
+
 client.on('message', msg => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith(prefix)) return;
@@ -378,6 +439,7 @@ client.on('message', msg => {
     }
 }
 });
+
 
 
 
@@ -411,6 +473,8 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return;
 
 
 
+
+
 client.on("message", message => {
 
             if (message.content.startsWith(prefix + "bc3")) {
@@ -428,6 +492,8 @@ client.on("message", message => {
 
 
 
+
+
 client.on("message", message => {
 
             if (message.content.startsWith(prefix + "bc4")) {
@@ -441,6 +507,8 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
+
+
 
 
 
@@ -473,6 +541,8 @@ client.on("message", message => {
  message.author.send(embed);
 }  
 });
+
+
 
 
 
@@ -519,6 +589,9 @@ __امامك  5 توان للاختيار__`)
  
 
 
+
+
+
 client.on('message', message => {
    if(message.content.startsWith(prefix + "invites")) {
     message.guild.fetchInvites().then(invs => {
@@ -529,6 +602,10 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
 });
   }
 });
+
+
+
+
 
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'infou')) {
@@ -548,7 +625,12 @@ var day = message.createdAt.getDate()
 
   message.channel.send({embed});
     }
-})
+});
+
+
+
+
+
 
 
 const codes = {
@@ -590,8 +672,12 @@ const codes = {
   };
   });
 
+
+
+
+
 client.on('message', message => {
-            if (message.content.startsWith(prefix + "قوانين")) {
+            if (message.content.startsWith("قوانين")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('     **اولا** ' ,' **ممنوع السب** ')
@@ -608,6 +694,10 @@ client.on('message', message => {
     }
 });
 
+
+
+
+
 const secreT = [
   "**الحياة بكل ما فيها تقف دائمًا على حد الوسطية بين اتزان المعنى وضده من حب وكره وحق وباطل وعدل وظلم**.",
   "**كى تعيش عليك ان تتقن فن التجاهل باحتراف**.",
@@ -621,7 +711,6 @@ const secreT = [
   "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
   "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
 ]
-
 
  client.on('message', message => {
    if (message.content.startsWith(prefix + "خواطر")) {
@@ -638,8 +727,11 @@ const secreT = [
 });
 
 
+
+
+
 client.on('message' , message => {
-  var prefix = "*";
+  var prefix = "!";
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "bcrole")) {
     let args = message.content.split(" ").slice(1);
@@ -678,6 +770,10 @@ client.on('message' , message => {
     }
 });
 
+
+
+
+
 client.on('message', message => {
 
     if (message.content.startsWith("رابط")) {        
@@ -706,8 +802,12 @@ client.on('message', message => {
  
 });
 
+
+
+
+
 client.on('message', (message)=>{
-        if (message.content.startsWith(`+embed`)) {
+        if (message.content.startsWith(`!embed`)) {
                 var embed = new Discord.RichEmbed()
                 .setAuthor(client.user.username,client.user.avatarURL)
                 .setTitle("Message By " + message.author.tag)
@@ -719,6 +819,10 @@ client.on('message', (message)=>{
                 message.channel.send(message.content.split(" ").join(" ").slice(5));
         };
 })
+
+
+
+
 
 client.on('message', message => {                      
     if(!message.channel.guild) return;
@@ -817,8 +921,8 @@ message.channel.sendEmbed(embed).then();
 
  
                                })
-                               
-                               //الون الاخضر
+                              
+//الون الاخضر
 
 let y3Filter = (reaction, user) => reaction.emoji.name === '💚' && user.id === message.author.id;
      
@@ -930,6 +1034,10 @@ message.channel.sendEmbed(embed).then();
 
 
  
+
+
+
+
     client.on('message', message => {
 const Canvas = require("canvas") // npm i canvas
 const fs = require("fs") // npm i fs
@@ -1248,7 +1356,7 @@ client.on("message", message => {
 	
   }
 
-  if(message.content === "!help") {
+  if(message.content === ".help") {
     message.channel.send(` QuranBot
 :mosque: .quran 1  :   القران الكريم كامل بصوت الشيخ عبدالباسط عبدالصمد 
 
@@ -1263,6 +1371,11 @@ client.on("message", message => {
  
 	    
 });
+
+
+
+
+
 
 
   
