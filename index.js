@@ -929,7 +929,6 @@ message.channel.sendEmbed(embed).then();
 
 
 
-let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
  
     client.on('message', message => {
 const Canvas = require("canvas") // npm i canvas
