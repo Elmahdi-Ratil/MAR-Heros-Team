@@ -336,7 +336,80 @@ client.on("message", message =>{
    message.channel.send(".. Removed");
    }
 });
+client.on('message', message => {
+  if (message.content.startsWith ("+invites")) {
+   if(!message.channel.guild) return message.reply('** This command only for servers **');
+       var mentionned = message.mentions.users.first();
+      var os;
+    if(mentionned){
+        var os = mentionned.id;
+    } else {
+        var os = message.author.id;
+        
+    }
+        var oss;
+    if(mentionned){
+        var oss = mentionned;
+    } else {
+        var oss = message.author;
+        
+    }
+message.guild.fetchInvites()
+.then(invites =>{
+if(!invites.find(invite => invite.inviter.id === `${os}`)) return message.channel.send(`**${oss.username}, Does't Have Invites :x:**`);
+message.channel.send(`**__${invites.find(invite => invite.inviter.id === `${os}`).uses}__ Member Joined By ${oss.username} !** :chart_with_upwards_trend: `)
 
+})
+
+
+
+}
+
+});
+client.on('message' , message => { 
+const prefix = '+'
+    if (message.author.bot) return;
+     if (message.content === prefix + "se") {
+       if (message.author.id !== '389090790984515594') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+
+if(!message.channel.guild) return;
+  if(message.content < 1023) return
+  const Embed11 = new Discord.RichEmbed()
+.setAuthor(client.user.username,client.user.avatarURL)
+.setThumbnail(client.user.avatarURL)
+.setDescription(`***مجموع السيرفرات ${client.guilds.size} \n \n${client.guilds.map(guilds => `- ${guilds.name}`).join('\n')}***`)
+         message.channel.sendEmbed(Embed11)
+    }
+});
+client.on('message', message => {
+
+if (message.author.bot) return;
+    if (message.content === "+rmutechannel") {
+                        if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("تم تقفيل الشات ✅ ")
+           });
+             }
+if (message.content === "+runmutechannel") {
+    if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("تم فتح الشات✅")
+           });
+             }
+
+
+
+})
 
 
 
