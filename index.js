@@ -2,9 +2,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '+'
 
-client.on('ready', () => {
-     client.user.setActivity("+help",{type: 'WATCHING'})
 
+
+
+
+client.on('ready', function() {
+	console.log(`i am ready ${client.user.username}`);
+    client.user.setActivity('Mido King');
 });
 
 
