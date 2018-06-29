@@ -484,17 +484,6 @@ client.on('message', msg => {
     }
 };
 });			 
-client.on('message', msg => {
-  if(msg.content === '+unhide') {
-    msg.guild.channels.forEach(c => {
-      c.overwritePermissions(msg.guild.id, {
-        SEND_MESSAGES: true,
-        READ_MESSAGES: true
-      })
-    })
-    msg.channel.send('.')
-  }
-})
 
 
 
