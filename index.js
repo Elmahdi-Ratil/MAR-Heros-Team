@@ -200,7 +200,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (true) {
 if (message.content === '+invite') {
-      message.author.send('https://discordapp.com/api/oauth2/authorize?client_id=457536673333379083&permissions=8&scope=bot').catch(e => console.log(e.stack));
+      message.author.send('https://discordapp.com/oauth2/authorize?client_id=458751694516256769&permissions=8&scope=bot').catch(e => console.log(e.stack));
 
     }
    } 
@@ -3384,31 +3384,31 @@ client.on('message', message => {
       if (!message.content.startsWith(prefix)) return;
       var args = message.content.split(' ').slice(1);
       var argresult = args.join(' ');
-      if (message.author.id == 457536673333379083) return;
+      if (message.author.id == 458751694516256769) return;
 
 
     if (message.content.startsWith(prefix + 'playing')) {
-    if (message.author.id !== '389090790984515594') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
     client.user.setGame(argresult);
         message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
     } else
 
 
     if (message.content.startsWith(prefix + 'streem')) {
-    if (message.author.id !== '389090790984515594') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
     client.user.setGame(argresult, "http://twitch.tv/HP");
         message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
     } else
 
     if (message.content.startsWith(prefix + 'setname')) {
-    if (message.author.id !== '389090790984515594') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
       client.user.setUsername(argresult).then
           message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
       return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
     } else
 
     if (message.content.startsWith(prefix + 'setavatar')) {
-    if (message.author.id !== '389090790984515594') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
     client.user.setAvatar(argresult);
         message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
     }
