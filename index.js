@@ -196,7 +196,14 @@ client.on('message', message => {
       message.author.sendEmbed(Embed11)
     }
 });
+client.on('message', message => {
+  if (true) {
+if (message.content === '+invite') {
+      message.author.send('https://discordapp.com/api/oauth2/authorize?client_id=457536673333379083&permissions=8&scope=bot').catch(e => console.log(e.stack));
 
+    }
+   } 
+  });
 
 
 
