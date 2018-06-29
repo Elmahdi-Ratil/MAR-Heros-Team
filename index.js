@@ -320,7 +320,22 @@ client.on('message', message => {
      });
     }
 });
+client.on("message", message =>{
+//if(message.author.id !== "378294311126695938") return;
+ var command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
 
+   if(command == "+removeRoles"){
+       var user= message.mentions.users.first();
+       if(!user){
+           user = message.author;
+       }
+    message.guild.member(user).removeRoles(message.guild.member(user).roles)
+//      .then(console.log)
+      .catch(console.error);
+   message.channel.send(".. Removed");
+   }
+});
 
 
 
