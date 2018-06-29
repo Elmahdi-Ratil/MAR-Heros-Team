@@ -409,8 +409,182 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
+});
+client.on('message', message => {
+    if (message.content === "+rooms") {
+        if (message.author.bot) return
+                      if (!message.guild) return;
+
+        var channels = message.guild.channels.map(channels => `${channels.name}, `).join(' ')
+        const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField(`${message.guild.name}`,`**الرومات✅**`)
+        .addField('⬇ عدد الرومات. ✔',`** ${message.guild.channels.size}**`)
+        
+.addField('⬇اسماء الرومات. ✔:',`**[${channels}]**`)
+        message.channel.sendEmbed(embed);
+    }
+});
+client.on("message", message => {
+           if (message.content.startsWith("+ct")) {
+             if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
+                       if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
+                   let args = message.content.split(" ").slice(1).join(" ")
+                   if (!args[1] || args[1 == " "]) return message.reply("يرجى كتابه اسم الشات الكتابي")
+               message.guild.createChannel(args, 'text');
+           message.channel.sendMessage(`✅ تـم إنـشـاء شـات كتابي بأسـم **{  ${args}  }**`)
+
+           }
+           });
+client.on("message", (message) => {
+           if (message.content.startsWith("+cv")) {
+             if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
+                       if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
+                  let args = message.content.split(" ").slice(1).join(" ")
+                 if (!args[1] || args[1 == " "]) return message.reply("يرجى كتابته اسم الروم الصوتي")
+               message.guild.createChannel(args, 'voice');
+               message.channel.sendMessage(`✅ تـم إنـشـاء روم صـوتي بـأسـم **{  ${args}  }**`)
+
+           }
+           });		   
+client.on("message", (message) => {
+                 if (message.content.startsWith('+delete')) {
+if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
+                     if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
+
+                     let args = message.content.split(' ').slice(1);
+                     let channel = message.client.channels.find('name', args.join(' '));
+                     if (!channel) return message.reply('**لا يوجد روم صوتي او شات كتابي بهذا الأسم**')
+                     channel.delete()
+                     message.channel.sendMessage('❌ تـم حـذف الـروم الـصوتـي او الـشـات الـكـتـابـي')
+                 }
+             });		   
+const math = require('math-expression-evaluator');
+const stripIndents = require('common-tags').stripIndents;
+
+client.on('message', msg => {
+	const prefix = '+'
+ if (msg.content.startsWith(prefix + 'calculator')) {
+    let args = msg.content.split(" ").slice(1);
+        const question = args.join(' ');
+    if (args.length < 1) {
+        msg.reply('Specify a equation, please.');
+} else {    let answer;
+    try {
+        answer = math.eval(question);
+    } catch (err) {
+        msg.reply(`Error: ${err}`);
+    }
+
+    const embed = new Discord.RichEmbed()
+    .addField("**السؤال**: ",`**${question}**`, true)
+    .addField("**الناتج**: ",`**${answer}**`, true)
+    .setFooter("S Bot حاسبه")
+    msg.channel.send(embed)
+    }
+};
+});			 
+client.on('message', msg => {
+  if(msg.content === '+unhide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true
+      })
+    })
+    msg.channel.send('.')
+  }
 })
 
+client.on('message', message => {
+	const prefix = '+'
+if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'move')) {
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
+}
+if (message.member.voiceChannel != null) {
+ if (message.mentions.members.first().voiceChannel != null) {
+ var authorchannel = message.member.voiceChannelID;
+ var usermentioned = message.mentions.members.first().id;
+var embed = new Discord.RichEmbed()
+ .setTitle("Succes!")
+ .setColor("#000000")
+ .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك:white_check_mark: `)
+var embed = new Discord.RichEmbed()
+.setTitle(`You are Moved in ${message.guild.name}`)
+ .setColor("#000000")
+.setDescription(`<@${message.author.id}> moved you to his channel!\nServer => ${message.guild.name}`)
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+message.guild.members.get(usermentioned).send(embed)
+} else {
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+}
+} else {
+ message.channel.send("``يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك``")
+}
+} else {
+message.react("❌")
+ }}});		
+ client.on('message', message => {
+     if (message.author.bot) return;
+	 const prefix = '+'
+if (message.content.startsWith(prefix + "uptime")) {
+    let uptime = client.uptime;
+
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+    let notCompleted = true;
+
+    while (notCompleted) {
+
+        if (uptime >= 8.64e+7) {
+
+            days++;
+            uptime -= 8.64e+7;
+
+        } else if (uptime >= 3.6e+6) {
+
+            hours++;
+            uptime -= 3.6e+6;
+
+        } else if (uptime >= 60000) {
+
+            minutes++;
+            uptime -= 60000;
+
+        } else if (uptime >= 1000) {
+            seconds++;
+            uptime -= 1000;
+
+        }
+
+        if (uptime < 1000)  notCompleted = false;
+
+    }
+
+    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} , ${seconds} sec` + "`");
+
+
+}
+});
+client.on('message', message => {
+    if (message.author.bot) return;
+    if(message.content == '+member') {
+    const embed = new Discord.RichEmbed()
+    .addField(`حالة الأعضاء🔋`,'-',   true)
+.addField(`💚 اونلاين:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}`,'-',   true)
+.addField(`❤ مشغول:     ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`,'-',   true)
+.addField(`💛 خامل:      ${message.guild.members.filter(m=>m.presence.status == 'idle').size}`,'-',   true)   
+.addField(`🖤 اوفلاين:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size}`,'-',  true) 
+.addField(`💙   الكل:  ${message.guild.memberCount}`,'-',   true)         
+         message.channel.send({embed});
+
+    }
+  });
 
 
 
