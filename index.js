@@ -1,13 +1,26 @@
 const Discord = require('discord.js');
+const bot = new Discord.Client();
 const client = new Discord.Client();
 const prefix = '+'
-
-
-client.on('ready', function() {
-	console.log(`i am ready ${client.user.username}`);
-    client.user.setGame('Mido King');
+client.on('ready', () => {
+  console.log('╔[════════════════════════════════════]╗');
+  console.log('')
+  console.log('            ╔[════════════]╗')
+  console.log('              Bot Is Online')
+  console.log('            ╚[════════════]╝')
+  console.log('')
+  console.log(`Logged in as ${client.user.tag}!`);
+  console.log('')
+  console.log(`servers! [ " ${client.guilds.size} " ]`);
+  console.log('')
+  console.log(`Users! [ " ${client.users.size} " ]`);
+  console.log('')
+  console.log('╚[════════════════════════════════════]╝')
 });
+client.on('ready', () => {
+     client.user.setActivity("+help",{type: 'WATCHING'})
 
+});
 
 client.on("message", message => {
     if (message.content === (prefix + "help")) {
@@ -187,7 +200,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (true) {
 if (message.content === '+invite') {
-      message.author.send('https://discordapp.com/oauth2/authorize?client_id=458751694516256769&permissions=8&scope=bot').catch(e => console.log(e.stack));
+      message.author.send('https://discordapp.com/api/oauth2/authorize?client_id=457536673333379083&permissions=8&scope=bot').catch(e => console.log(e.stack));
 
     }
    } 
