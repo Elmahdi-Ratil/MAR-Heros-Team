@@ -200,7 +200,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (true) {
 if (message.content === '&invite') {
-      message.author.send('https://discordapp.com/api/oauth2/authorize?client_id=457536673333379083&permissions=8&scope=bot').catch(e => console.log(e.stack));
+      message.author.send('https://discordapp.com/oauth2/authorize?client_id=458751694516256769&permissions=8&scope=bott').catch(e => console.log(e.stack));
 
     }
    } 
@@ -324,7 +324,7 @@ client.on('message', message => {
     }
 });
 client.on("message", message =>{
-//if(message.author.id !== "348082708670578688") return;
+//if(message.author.id !== "378293431593598986") return;
  var command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
 
@@ -3185,7 +3185,7 @@ client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('&bcc')){
- if(!message.author.id === '389090790984515594') return;
+ if(!message.author.id === '378293431593598986') return;
 message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
 client.users.forEach(m =>{
 m.sendMessage(args)
