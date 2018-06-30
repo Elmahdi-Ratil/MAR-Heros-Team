@@ -3128,41 +3128,39 @@ client.on("message", message => {
     msg.channel.send('.')
   }
 })
-client.on('message', async (message) => {
-    if(message.content.startsWith('+nick')) {
-         let args = message.content.split(' ').slice(1);
-  try {
-    if (args.length > 0) {
-      await message.guild.me.setNickname(args.join(' '));
+client.on('message', message => {
+	const prefix = '+'
+if (message.content.startsWith(prefix + 'tag')) {
+    let args = message.content.split(" ").slice(1);
+if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');  
 
-      message.channel.send({
-        embed: {
-          color: message.colors.GREEN,
-          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
-        }
-      }).catch(e => {
-        message.log.error(e);
-      });
-    }
-    else {
-      await message.guild.me.setNickname('');
-
-      message.channel.send({
-        embed: {
-          color: message.colors.GREEN,
-          description: `${message.user.username}'s nick has been reset on this guild.`
-        }
-      }).catch(e => {
-        message.log.error(e);
-      });
-    }
-  }
-  catch (e) {
-    message.log.error(e);
-  }
+    figlet(args.join(" "), (err, data) => {
+              message.channel.send("``" + data + "``") //  عدل على النقاط وحطهم 3 من الجهتين مثل`` كذا تزيد واحد
+           })
 }
 });
-const figlet = require('figlet');
+client.on('message', message => {
+ if (message.content.includes('discord.gg')){      //شيل المسافه
+                     if(!message.channel.guild) return message.reply ('')
+                 if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+    message.delete() 
+     var member = message.member
+    
+ 
+       
+          member.ban().then((member) => {
+              message.channel.send("", {embed: {
+              author: {
+              },
+              title: 'بسبب النشر ' + member.displayName + ' تم طرد',
+              color: 490101,
+              }
+            });
+        }
+      ) 
+    }
+}
+});
 
 
 
