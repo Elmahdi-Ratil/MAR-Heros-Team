@@ -432,7 +432,43 @@ client.on("message", (message) => {
 
            }
            });		   
+client.on("message", (message) => {
+                 if (message.content.startsWith('+delete')) {
+if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
+                     if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
 
+                     let args = message.content.split(' ').slice(1);
+                     let channel = message.client.channels.find('name', args.join(' '));
+                     if (!channel) return message.reply('**لا يوجد روم صوتي او شات كتابي بهذا الأسم**')
+                     channel.delete()
+                     message.channel.sendMessage('❌ تـم حـذف الـروم الـصوتـي او الـشـات الـكـتـابـي')
+                 }
+             });		   
+const math = require('math-expression-evaluator');
+const stripIndents = require('common-tags').stripIndents;
+
+client.on('message', msg => {
+	const prefix = '+'
+ if (msg.content.startsWith(prefix + 'calculator')) {
+    let args = msg.content.split(" ").slice(1);
+        const question = args.join(' ');
+    if (args.length < 1) {
+        msg.reply('Specify a equation, please.');
+} else {    let answer;
+    try {
+        answer = math.eval(question);
+    } catch (err) {
+        msg.reply(`Error: ${err}`);
+    }
+
+    const embed = new Discord.RichEmbed()
+    .addField("**السؤال**: ",`**${question}**`, true)
+    .addField("**الناتج**: ",`**${answer}**`, true)
+    .setFooter("S Bot حاسبه")
+    msg.channel.send(embed)
+    }
+};
+});	
 
 
 
