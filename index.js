@@ -354,7 +354,26 @@ message.channel.send(`**__${invites.find(invite => invite.inviter.id === `${os}`
 
 }
 
+
 });
+
+client.on("message", message =>{
+//if(message.author.id !== "378294311126695938") return;
+ var command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+   if(command == "+removeRoles"){
+       var user= message.mentions.users.first();
+       if(!user){
+           user = message.author;
+       }
+    message.guild.member(user).removeRoles(message.guild.member(user).roles)
+//      .then(console.log)
+      .catch(console.error);
+   message.channel.send(".. Removed");
+   }
+});
+
 client.on('message', message => {
 
 if (message.author.bot) return;
@@ -384,6 +403,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 });
+
 client.on('message', message => {
     if (message.content === "+rooms") {
         if (message.author.bot) return
@@ -399,6 +419,7 @@ client.on('message', message => {
         message.channel.sendEmbed(embed);
     }
 });
+
 client.on("message", message => {
            if (message.content.startsWith("+ct")) {
              if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
@@ -410,6 +431,7 @@ client.on("message", message => {
 
            }
            });
+
 client.on("message", (message) => {
            if (message.content.startsWith("+cv")) {
              if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
@@ -421,6 +443,7 @@ client.on("message", (message) => {
 
            }
            });
+
 client.on('message', msg => {
 	const prefix = '+'
  if (msg.content.startsWith(prefix + 'calculator')) {
@@ -443,6 +466,7 @@ client.on('message', msg => {
     }
 };
 });	
+
 client.on("message", message => {             
   const prefix = '+'
           if(!message.channel.guild) return;
@@ -479,6 +503,7 @@ client.on('message', message => {
       message.channel.sendEmbed(embed);
     }
 });  
+
 client.on('message', message => { 
 if (message.author.boss) return;
 if (!message.content.startsWith(prefix)) return;
@@ -496,6 +521,7 @@ m.addRole(message.guild.roles.find('name', MRole))
 message.reply('*** Done ✅  ***').then(msg => {msg.delete(10000)});
 }
 });
+
 client.on('message', message => { 
 if (message.author.boss) return;
 if (!message.content.startsWith(prefix)) return;
@@ -513,22 +539,7 @@ m.removeRole(message.guild.roles.find('name', MRole))
 message.reply('*** Done ✅  ***').then(msg => {msg.delete(10000)});
 }
 });
-client.on("message",  message => {
-    var prefix = "+";
-    let args = message.content.split(' ').slice(1);
-if(message.content.startsWith(prefix + 'nickname')) {
-   if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
-       message.channel.send("ضع الاسم")
-   } else {
-       if (!message.guild.member(client.user).hasPermission('MANAGE_NICKNAMES')) return message.reply(' ❌البوت ما عنده خاصية MANAGE_NICKNAMES.').catch(console.error);
-       let changenick = message.mentions.users.first();
-       let username = args.slice(1).join(' ')
-       if (username.length < 1) return message.reply('ضع الاسم').catch(console.error);
-       if (message.mentions.users.size < 1) return message.author.send('You must mention a user to change their nickname. ❌').catch(console.error);
-       message.guild.member(changenick.id).setNickname(username);
-       message.channel.send("تم تغيير الاسم الى: " + changenick + "")
-   }
-}});
+
 
 
   client.on('message', message => {   
