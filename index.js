@@ -444,7 +444,8 @@ if(!message.channel.guild) return message.reply('هذا الأمر للسيرف�
                      message.channel.sendMessage('❌ تـم حـذف الـروم الـصوتـي او الـشـات الـكـتـابـي')
                  }
              });		   
-
+const math = require('math-expression-evaluator');
+const stripIndents = require('common-tags').stripIndents;
 
 client.on('message', msg => {
 	const prefix = '+'
