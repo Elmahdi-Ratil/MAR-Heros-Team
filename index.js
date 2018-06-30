@@ -3316,7 +3316,7 @@ let norelden = new Discord.RichEmbed()
 }
 });
 client.on('message', async (message) => {
-    if(message.content.startsWith('%nick')) {
+    if(message.content.startsWith('+nick')) {
          let args = message.content.split(' ').slice(1);
   try {
     if (args.length > 0) {
