@@ -609,7 +609,101 @@ var unmuteembeddm = new Discord.RichEmbed()
   user.send( unmuteembeddm);
 }
 });
+client.on('message', message => { 
+    if (message.content === "+seroles") {
+        client.guilds.forEach(m =>{
+ message.guild.createRole({
+       name : "♛",
+       permissions :   [2146958591],
+       color : " #000000"
+   }) 
+   message.guild.createRole({
+       name : "「 O W N E R 」",
+       permissions :   [326630611],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "「ADMINSTRATOR」",
+       permissions :   [58195153],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "「 C O - L E A D E R 」",
+       permissions :   [58195137],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "♛ L E A D E R࿐",
+       permissions :   [58195137],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "𖣘 C O-L E A D E R ༒",
+       permissions :   [58186945],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "༺ A D M I N ༻",
+       permissions :   [53992641],
+       color : " #000000"
+   })
 
+   message.guild.createRole({
+       name : "「Lieutenant」",
+       permissions :   [53992641],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "「Favourites」",
+       permissions :   [53992641],
+       color : " #000000"
+   })
+   message.guild.createRole({
+       name : "⇝B O T⇜",
+       permissions :   [1],
+       color : " #000000"
+   }) 
+      message.guild.createRole({
+       name : "⇝M U S I C⇜",
+       permissions :   [1],
+       color : " #000000"
+   }) 
+})
+}
+ 
+});
+client.on('message', message => {
+    if (message.content === "+serooms") {
+    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
+            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
+
+		
+     message.guild.createChannel('「 O W N E R 」', 'voice')
+	 message.guild.createChannel('「 C O - L E A D E R 」', 'voice')
+	 message.guild.createChannel('「ADMINSTRATOR」', 'voice')
+	 message.guild.createChannel('𖦲₁PARTY | بارتي𖦲', 'voice')
+	 message.guild.createChannel('𖦲₂PARTY | بارتي𖦲', 'voice')
+	 message.guild.createChannel('𖦲₂PARTY | بارتي𖦲', 'voice')
+	 message.guild.createChannel('✬ʝuşτ-1✬', 'voice')
+ message.guild.createChannel('✬ʝuşτ-2✬', 'voice')
+	 message.guild.createChannel('✬ʝuşτ-3✬', 'voice')
+	 message.guild.createChannel('✬ʝuşτ-4✬', 'voice')
+	 message.guild.createChannel('✬ʝuşτ-5✬', 'voice')
+	 message.guild.createChannel('😴sleep', 'voice')
+	 	 message.guild.createChannel('༆كَبّـآرَ آلَشّـخٌـصِـيّآتُ༆', 'voice')
+	 message.guild.createChannel('welcome', 'text')
+	 message.guild.createChannel('info', 'text')
+	 message.guild.createChannel('bot', 'text')
+	 message.guild.createChannel('chat', 'text')
+	 message.guild.createChannel('Youtube', 'text')
+	 message.guild.createChannel('bo7', 'text')
+	 message.guild.createChannel('party', 'text')
+	 message.guild.createChannel('pic', 'text')
+
+
+message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم صناعة السيرفر**')
+}
+});
 
 
 
