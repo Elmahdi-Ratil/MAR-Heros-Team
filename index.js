@@ -3330,6 +3330,16 @@ client.on("roleCreate", rc => {
   channel.sendEmbed(embed)
   }
   });
- 
+ client.on("deleteChannel",  dc => {
+  const channel = dc.guild.channels.find("name", "log")
+  if(channel) {
+  var embed = new Discord.RichEmbed()
+  .setTitle(dc.guild.name)
+  .setDescription(`***Channel Deleted Name : *** **${dc.name}** ⬅️`)
+  .setColor(`RANDOM`)
+  .setTimestamp(); 
+  channel.sendEmbed(embed)
+  }
+  }
 
 client.login(process.env.BOT_TOKEN);
