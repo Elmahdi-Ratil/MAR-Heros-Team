@@ -3105,7 +3105,75 @@ client.on('message', ra3d => {
            ra3d.author.sendEmbed(embed);
  }
  });  
+client.on("message", message => {
+     var prefix = "+";
+    if(message.content.startsWith(prefix + 'v2min')) {
+     let args = message.content.split(" ").slice(1);
+       var nam = args.join(' ');
+    
+      if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('`ADMINISTRATOR` للأسف هذه الخاصية تحتاج الى ').then(msg => msg.delete(6000))
+      if (!nam) return message.channel.send(`<@${message.author.id}> يجب عليك ادخال اسم`).then(msg => msg.delete(10000))
+      message.guild.createChannel(nam, 'voice').then(c => setTimeout(() => c.delete(), 120000)) // كل 60 تساوي دقيقة عدل عليها الوقت لي تبيه 
+      message.channel.send(`☑ TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> ⏱  انتهى وقت الروم الصوتي`), 120000))  // 120000 دقيقتان
+    }
+    });
+	client.on('message', msg => {
+  if(msg.content === '+hide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: false,
+        READ_MESSAGES: false
+      })
+    })
+    msg.channel.send('.')
+  }
+})
+client.on('message', async (message) => {
+    if(message.content.startsWith('+nick')) {
+         let args = message.content.split(' ').slice(1);
+  try {
+    if (args.length > 0) {
+      await message.guild.me.setNickname(args.join(' '));
 
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+    else {
+      await message.guild.me.setNickname('');
+
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick has been reset on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+  }
+  catch (e) {
+    message.log.error(e);
+  }
+}
+});
+const figlet = require('figlet');
+client.on('message', message => {
+	const prefix = '+'
+if (message.content.startsWith(prefix + 'tag')) {
+    let args = message.content.split(" ").slice(1);
+if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');  
+
+    figlet(args.join(" "), (err, data) => {
+              message.channel.send("``" + data + "``") //  عدل على النقاط وحطهم 3 من الجهتين مثل`` كذا تزيد واحد
+           })
+}
+});
 
 
 
