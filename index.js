@@ -192,6 +192,7 @@ client.on('message', message => {
       message.author.sendEmbed(Embed11)
     }
 });
+
 client.on('message', message => {
   if (true) {
 if (message.content === '+invite') {
@@ -200,6 +201,7 @@ if (message.content === '+invite') {
     }
    } 
   });
+
 client.on('message', message => {
      if (message.content === "+invite") {
      let embed = new Discord.RichEmbed()
@@ -212,6 +214,7 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+
 client.on('message', message =>{
     if (message.author.bot) return;
     if(message.content == "+roles"){
@@ -225,6 +228,7 @@ client.on('message', message =>{
         message.channel.send(role.join("\n"));
     }
 });
+
 client.on('message', message => {
     if (message.content.startsWith("+infobot")) {
       message.channel.send({
@@ -248,6 +252,7 @@ client.on('message', message => {
     seconds = seconds > 9 ? seconds : '0' + seconds
     return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
 };
+
 client.on('message', message => {
 	const prefix = '+'
     if (message.author.id === client.user.id) return;
@@ -271,6 +276,7 @@ return;
         return;
     }
 });
+
 client.on('message', message => {
                                 if(!message.channel.guild) return;
                         if (message.content.startsWith('+ping')) {
@@ -286,7 +292,8 @@ client.on('message', message => {
          message.channel.send({embed:embed});
                         }
                     });
-					client.on("message", message => {
+
+client.on("message", message => {
     const command = message.content.split(" ")[0];
 
     if(command == prefix+"vc"){
@@ -316,22 +323,8 @@ client.on('message', message => {
      });
     }
 });
-client.on("message", message =>{
-//if(message.author.id !== "378294311126695938") return;
- var command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
 
-   if(command == "+removeRoles"){
-       var user= message.mentions.users.first();
-       if(!user){
-           user = message.author;
-       }
-    message.guild.member(user).removeRoles(message.guild.member(user).roles)
-//      .then(console.log)
-      .catch(console.error);
-   message.channel.send(".. Removed");
-   }
-});
+
 client.on('message', message => {
   if (message.content.startsWith ("+invites")) {
    if(!message.channel.guild) return message.reply('** This command only for servers **');
