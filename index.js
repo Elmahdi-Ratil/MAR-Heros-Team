@@ -3192,6 +3192,17 @@ client.on('message', message => {
     }
 }
 });
+client.on('message', msg => {
+  if(msg.content === '+unhide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true
+      })
+    })
+    msg.channel.send('.')
+  }
+})
 client.on('message', message => {
     var prefix = "+";
 
@@ -3249,164 +3260,6 @@ client.on('message', ( message ) => {
     }
 });
 
-  client.on('message', message => {
-          let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == 'لون'){
-           const embedd = new Discord.RichEmbed()
-     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-   .setDescription(`**There's No Color With This Number ** :x: `)
-   .setColor(`ff0000`)
-
-    if(!isNaN(args) && args.length > 0)
-    
-
-if    (!(message.guild.roles.find("name",`${args}`))) return  message.channel.sendEmbed(embedd);
-
-
-       var a = message.guild.roles.find("name",`${args}`)
-                if(!a)return;
-const embed = new Discord.RichEmbed()
-                    
-     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-   .setDescription(`**Color Changed To Successfully** :white_check_mark: `)
- 
-   .setColor(`${a.hexColor}`)
-  message.channel.sendEmbed(embed);
-          if (!args)return;
-setInterval(function(){})
-                  let count = 0;
-                  let ecount = 0;
-        for(let x = 1; x < 201; x++){
-           
-            message.member.removeRole(message.guild.roles.find("name",`${x}`))
-          
-            }
-                message.member.addRole(message.guild.roles.find("name",`${args}`));
-        
-            
-    }
-});
-client.on('message', message => {
-	var prefix = "+";
-  if (!message.content.startsWith(prefix)) return;
-  const verifed = ["389090790984515594"];
-if (message.content.startsWith(prefix + 'owner')) {
-if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
-} else {
-   message.reply('**انت لست صاحب البوت**' + '❌');   
-}
-}
-});
-client.on("roleCreate", rc => {
-  const channel = rc.guild.channels.find("name", "log") //تقدر تغير اسم الشات
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rc.guild.name)
-  .setDescription(`***Created Role Name : *** **${rc.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-  //By S Codes
-  client.on("roleDelete",  rd => {
-  const channel = rd.guild.channels.find("name", "log")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rd.guild.name)
-  .setDescription(`***Deleted Role Name : *** **${rd.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-   client.on("deleteChannel",  dc => {
-  const channel = dc.guild.channels.find("name", "log")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(dc.guild.name)
-  .setDescription(`***Channel Deleted Name : *** **${dc.name}** ⬅️`)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-client.on('messageUpdate', (message, newMessage) => {
-    if (message.content === newMessage.content) return;
-    if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find('name', 'log');
-    if (!channel) return;
-
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-       .setColor('SILVER')
-       .setDescription(`✏ **تعديل رساله
-ارسلها <@${message.author.id}>                                                                                                                         تم تعديلها في شات** <#${message.channel.id}>\n\nقبل التعديل:\n \`${message.cleanContent}\`\n\nبعد التعديل:\n \`${newMessage.cleanContent}\``)
-       .setTimestamp();
-     channel.send({embed:embed});
-
-
-});
-
-client.on('guildMemberAdd', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-	
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.user.createdTimestamp).fromNow();
-    const isNew = (new Date() - member.user.createdTimestamp) < 900000 ? '🆕' : '';
-    
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-	   .setThumbnail(memberavatar)
-       .setColor('GREEN')
-       .setDescription(`📥 <@${member.user.id}> **Joined To The Server**\n\n`)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
-
-client.on('guildMemberRemove', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-	
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.joinedTimestamp).fromNow();
-    
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-	   .setThumbnail(memberavatar)
-       .setColor('RED')
-       .setDescription(`📤 <@${member.user.id}> **Leave From Server**\n\n`)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
-
-    if(command === "clear") {
-        const emoji = client.emojis.find("name", "log")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
-    }
-}
-});
 
 
 
