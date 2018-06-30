@@ -444,45 +444,8 @@ if(!message.channel.guild) return message.reply('هذا الأمر للسيرف�
                      message.channel.sendMessage('❌ تـم حـذف الـروم الـصوتـي او الـشـات الـكـتـابـي')
                  }
              });		   
-const math = require('math-expression-evaluator');
-const stripIndents = require('common-tags').stripIndents;
 
-client.on('message', msg => {
-	const prefix = '+'
- if (msg.content.startsWith(prefix + 'calculator')) {
-    let args = msg.content.split(" ").slice(1);
-        const question = args.join(' ');
-    if (args.length < 1) {
-        msg.reply('Specify a equation, please.');
-} else {    let answer;
-    try {
-        answer = math.eval(question);
-    } catch (err) {
-        msg.reply(`Error: ${err}`);
-    }
 
-    const embed = new Discord.RichEmbed()
-    .addField("**السؤال**: ",`**${question}**`, true)
-    .addField("**الناتج**: ",`**${answer}**`, true)
-    .setFooter("S Bot حاسبه")
-    msg.channel.send(embed)
-    }
-};
-});	
-client.on('message', message => {
-    if (message.author.bot) return;
-    if(message.content == '+member') {
-    const embed = new Discord.RichEmbed()
-    .addField(`حالة الأعضاء🔋`,'-',   true)
-.addField(`💚 اونلاين:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}`,'-',   true)
-.addField(`❤ مشغول:     ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`,'-',   true)
-.addField(`💛 خامل:      ${message.guild.members.filter(m=>m.presence.status == 'idle').size}`,'-',   true)   
-.addField(`🖤 اوفلاين:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size}`,'-',  true) 
-.addField(`💙   الكل:  ${message.guild.memberCount}`,'-',   true)         
-         message.channel.send({embed});
-
-    }
-  });
 
 
 
