@@ -3128,7 +3128,41 @@ client.on("message", message => {
     msg.channel.send('.')
   }
 })
+client.on('message', async (message) => {
+    if(message.content.startsWith('+nick')) {
+         let args = message.content.split(' ').slice(1);
+  try {
+    if (args.length > 0) {
+      await message.guild.me.setNickname(args.join(' '));
 
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+    else {
+      await message.guild.me.setNickname('');
+
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick has been reset on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+  }
+  catch (e) {
+    message.log.error(e);
+  }
+}
+});
+const figlet = require('figlet');
 
 
 
