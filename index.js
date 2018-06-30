@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-
+const index = new Discord.Client();
 const client = new Discord.Client();
 const prefix = '+'
 client.on('ready', () => {
@@ -48,13 +48,18 @@ client.on("message", message => {
 ('+rooms ' , 'لاضهار الرومات')
 ('+ct ' , 'لانشاء روم كتابي')
 ('+cv ' , 'لانشاء روم صوتي')
+('+delet ' , 'لخذف روم صوتي او شات')
 ('+calculator ' , 'الالة الحسابية')
+('+unhide ' , 'لفتح جميع الرومات صوتية وكتابية')
 ('+content ' , 'لارسال اقتراح لصحاب البوت')
+('+move ' , 'لسحب الشخص في رومات صوتية')
 ('+uptime ' , 'لمعرفه مده تشغيل البوت')
+('+member ' , 'حالة الاعضاء')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
 ('+image ' , 'لاضهار صورتك')
 ('roleadd ' , 'لاعطاء رتبه')
 ('+roleremove ' , 'لازاله الرتبه')
+('+nickname ' , 'لتغير اسم العضو')
 ('+suppport ' , 'لحصول على سيرفر المساعدة')
 ('+Mute ' , 'لاعطاء ميوت شات مع سبب')
 ('UnMute ' , 'لفك ميوت شات')
@@ -67,6 +72,7 @@ client.on("message", message => {
 ('+hide' , 'لاخفاء جميع رومات في سسيرفر')
 ('+tag' , 'لزخرفه الكتابه للانكليزي فقط')
 ('+sd' , 'لحذف كل شيئ بسيرفر')
+('+removeroles' , 'لحذف جميع رتب')
 ('+unhide' , 'لفتح جميع رومات')
 ('+ban' , 'لاعطاء باند')
 ('+unbans' , 'لفك باند عن جميع')
@@ -79,7 +85,7 @@ client.on("message", message => {
    message.author.sendEmbed(embed)
    
    }
-   });
+   }); 
 client.on('message', message => {
      if (message.content === (prefix + "help")) {
      let embed = new Discord.RichEmbed()
