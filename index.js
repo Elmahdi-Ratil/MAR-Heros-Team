@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const index = new Discord.Client();
+
 const client = new Discord.Client();
 const prefix = '+'
 client.on('ready', () => {
