@@ -395,7 +395,21 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 });
+client.on('message', message => {
+    if (message.content === "+rooms") {
+        if (message.author.bot) return
+                      if (!message.guild) return;
 
+        var channels = message.guild.channels.map(channels => `${channels.name}, `).join(' ')
+        const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField(`${message.guild.name}`,`**الرومات✅**`)
+        .addField('⬇ عدد الرومات. ✔',`** ${message.guild.channels.size}**`)
+        
+.addField('⬇اسماء الرومات. ✔:',`**[${channels}]**`)
+        message.channel.sendEmbed(embed);
+    }
+});
 
 
 
