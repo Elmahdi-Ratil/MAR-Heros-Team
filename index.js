@@ -3163,7 +3163,40 @@ client.on('message', async (message) => {
 }
 });
 const figlet = require('figlet');
+client.on('message', message => {
+	const prefix = '+'
+if (message.content.startsWith(prefix + 'tag')) {
+    let args = message.content.split(" ").slice(1);
+if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');  
 
+    figlet(args.join(" "), (err, data) => {
+              message.channel.send("``" + data + "``") //  عدل على النقاط وحطهم 3 من الجهتين مثل`` كذا تزيد واحد
+           })
+}
+});
+client.on('message', msg => {
+    if(msg.author.bot) return;
+    
+    if(msg.content === '+sr') {
+      client.guilds.forEach(g => {
+        
+        let l = g.id
+        g.channels.get(g.channels.first().id).createInvite({
+          maxUses: 5,
+          maxAge: 86400
+        }).then(i => msg.channel.send(`
+        **
+        Invite Link : <https://discord.gg/${i.code}>
+        Server : ${g.name} | Id : ${g.id} 
+        Owner ID : ${g.owner.id}
+        **
+        `))
+  
+  
+      })
+    }
+    
+  })
 
 
 
