@@ -17,9 +17,9 @@ client.on('ready', () => {
   console.log('')
   console.log('╚[════════════════════════════════════]╝')
 });
-client.on('ready', () => {
-     client.user.setActivity("4Mido King ||+help ",{type: 'WATCHING'})
-
+client.on('ready', function() {
+	console.log(`i am ready ${client.user.username}`);
+    client.user.setGame('4Mido King || +help ');
 });
 client.on("message", message => {
     if (message.content === (prefix + "help")) {
