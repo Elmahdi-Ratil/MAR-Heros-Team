@@ -3372,6 +3372,17 @@ client.on('message', msg => {
 }
 });
 
+client.on('message', msg => {
+  if(msg.content === '+hide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: false,
+        READ_MESSAGES: false
+      })
+    })
+    msg.channel.send('.')
+  }
+});
 
 
 
