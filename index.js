@@ -3315,7 +3315,40 @@ let norelden = new Discord.RichEmbed()
   message.channel.send({embed:v1}).then(m => m.edit({embed:norelden}),5000);
 }
 });
+client.on('message', async (message) => {
+    if(message.content.startsWith('%nick')) {
+         let args = message.content.split(' ').slice(1);
+  try {
+    if (args.length > 0) {
+      await message.guild.me.setNickname(args.join(' '));
 
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+    else {
+      await message.guild.me.setNickname('');
+
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick has been reset on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+  }
+  catch (e) {
+    message.log.error(e);
+  }
+}
+});
 
 
 
@@ -3332,7 +3365,7 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 }
 }
 });
- client.on("roleCreate", rc => {
+client.on("roleCreate", rc => {
   const channel = rc.guild.channels.find("name", "log") //تقدر تغير اسم الشات
   if(channel) {
   var embed = new Discord.RichEmbed()
@@ -3355,8 +3388,6 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
   channel.sendEmbed(embed)
   }
   });
-
-
    client.on("deleteChannel",  dc => {
   const channel = dc.guild.channels.find("name", "log")
   if(channel) {
@@ -3368,9 +3399,6 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
   channel.sendEmbed(embed)
   }
   });
-  
-  
-  
   client.on('messageUpdate', (message, newMessage) => {
     if (message.content === newMessage.content) return;
     if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
@@ -3387,7 +3415,6 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 
 
 });
-
 client.on('guildMemberAdd', member => {
     if (!member || !member.id || !member.guild) return;
     const guild = member.guild;
