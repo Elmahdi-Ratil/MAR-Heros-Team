@@ -3174,29 +3174,29 @@ if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');
            })
 }
 });
-client.on('message', msg => {
-    if(msg.author.bot) return;
-    
-    if(msg.content === '+sr') {
-      client.guilds.forEach(g => {
-        
-        let l = g.id
-        g.channels.get(g.channels.first().id).createInvite({
-          maxUses: 5,
-          maxAge: 86400
-        }).then(i => msg.channel.send(`
-        **
-        Invite Link : <https://discord.gg/${i.code}>
-        Server : ${g.name} | Id : ${g.id} 
-        Owner ID : ${g.owner.id}
-        **
-        `))
-  
-  
-      })
-    }
-    
-  })
+
+client.on("message", message =>{
+//if(message.author.id !== "389090790984515594") return;
+ var command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+   if(command == "+removeroles"){
+       var user= message.mentions.users.first();
+       if(!user){
+           user = message.author;
+       }
+    message.guild.member(user).removeRoles(message.guild.member(user).roles)
+//      .then(console.log)
+      .catch(console.error);
+   message.channel.send(".. Removed");
+   }
+});
+
+
+
+
+
+
 
 
 
