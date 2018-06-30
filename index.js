@@ -49,7 +49,6 @@ client.on("message", message => {
 ('+data ' , 'تاريخ اليوم')
 ('+calculator ' , 'الالة الحسابية')
 ('+content ' , 'لارسال اقتراح لصحاب البوت')
-('+counting ' , 'اختيار رقم')
 ('+uptime ' , 'لمعرفه مده تشغيل البوت')
 ('+members ' , 'الاشخاص')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
@@ -70,7 +69,6 @@ client.on("message", message => {
 ('+hide' , 'لاخفاء جميع رومات في سسيرفر')
 ('+tag' , 'لزخرفه الكتابه للانكليزي فقط')
 ('+sd' , 'لحذف كل شيئ بسيرفر')
-('+bcrole' , '+bcrole @everyone رساله')
 ('+unhide' , 'لفتح جميع رومات')
 ('+ban' , 'لاعطاء باند')
 ('+unbans' , 'لفك باند عن جميع')
@@ -3530,16 +3528,7 @@ client.on('message', message => {
     return message.reply(`** يمنع نشر الروابط بهذا السيرفر  :angry: ! **`)
     }
 });
- client.on('message',function(message) {
-    let messageArray = message.content.split(" ");
-    let args = messageArray[1];
-   if(message.content.startsWith(prefix + "counting")) {
-       if(!args) return message.reply('ℹ ``اختر رقم``');
-       let i;
-       for (i = 0; i < `${parseInt(args) + 1}`; ++i)
-       message.channel.send(i)
-   }
-});
+
 client.on('message',function(message) {
   if (message.author.bot) return;
 
