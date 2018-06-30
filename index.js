@@ -469,6 +469,7 @@ client.on('message', msg => {
     }
 };
 });	
+
  client.on('message', message => {
 	const prefix = '+'
 if(!message.channel.guild) return;
