@@ -3201,6 +3201,28 @@ if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');
 }
 });
 
+client.on('message', message => {
+ if (message.content.includes('discord.gg')){      //شيل المسافه
+                     if(!message.channel.guild) return message.reply ('')
+                 if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+    message.delete() 
+     var member = message.member
+    
+ 
+       
+          member.ban().then((member) => {
+              message.channel.send("", {embed: {
+              author: {
+              },
+              title: 'بسبب النشر ' + member.displayName + ' تم طرد',
+              color: 490101,
+              }
+            });
+        }
+      ) 
+    }
+}
+});
 
 client.on('message', msg => {
   if(msg.content === '+unhide') {
@@ -3213,6 +3235,7 @@ client.on('message', msg => {
     msg.channel.send('.')
   }
 })
+
 client.on('message', message => {
     var prefix = "+";
 
@@ -3270,18 +3293,45 @@ client.on('message', ( message ) => {
     }
 });
 
-
 client.on('message', message => {
-	var prefix = "+";
-  if (!message.content.startsWith(prefix)) return;
-  const verifed = ["389090790984515594"];
-if (message.content.startsWith(prefix + 'owner')) {
-if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
-} else {
-   message.reply('**انت لست صاحب البوت**' + '❌');   
-}
-}
+          let args = message.content.split(' ').slice(1);
+   if(message.content.split(' ')[0] == 'لون'){
+           const embedd = new Discord.RichEmbed()
+     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+   .setDescription(`**There's No Color With This Number ** :x: `)
+   .setColor(`ff0000`)
+
+    if(!isNaN(args) && args.length > 0)
+    
+
+if    (!(message.guild.roles.find("name",`${args}`))) return  message.channel.sendEmbed(embedd);
+
+
+       var a = message.guild.roles.find("name",`${args}`)
+                if(!a)return;
+const embed = new Discord.RichEmbed()
+                    
+     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+   .setDescription(`**Color Changed To Successfully** :white_check_mark: `)
+ 
+   .setColor(`${a.hexColor}`)
+  message.channel.sendEmbed(embed);
+          if (!args)return;
+setInterval(function(){})
+                  let count = 0;
+                  let ecount = 0;
+        for(let x = 1; x < 201; x++){
+           
+            message.member.removeRole(message.guild.roles.find("name",`${x}`))
+          
+            }
+                message.member.addRole(message.guild.roles.find("name",`${args}`));
+        
+            
+    }
 });
+
+
 
 
 
