@@ -3300,57 +3300,6 @@ setInterval(function(){})
             
     }
 });
-client.on("message",function(message) {
-    if(message.content.startsWith(prefix + 'uptime')) {
-        let uptime = client.uptime;
-
-    let days = 0;
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
-    let notCompleted = true;
-
-    while (notCompleted) {
-
-        if (uptime >= 8.64e+7) {
-
-            days++;
-            uptime -= 8.64e+7;
-
-        } else if (uptime >= 3.6e+6) {
-
-            hours++;
-            uptime -= 3.6e+6;
-
-        } else if (uptime >= 60000) {
-
-            minutes++;
-            uptime -= 60000;
-
-        } else if (uptime >= 1000) {
-            seconds++;
-            uptime -= 1000;
-
-        }
-
-        if (uptime < 1000)  notCompleted = false;
-
-    }
-    
-let v1 = new Discord.RichEmbed()
-  v1.setTimestamp(new Date())
-  v1.setColor("RED")
-  v1.setDescription('***__ Collecting Data __***')
-  v1.setFooter("# | S Bot  |") 
-let norelden = new Discord.RichEmbed()
-.setColor('#9b59b6')
-.setTimestamp(new Date())
-.setThumbnail(client.user.avatarURL)
-.addField("UpTime :",`**[** **Days:** \`${days}\` **Hours:** \`${hours}\` **Minutes:** \`${minutes}\` **Seconds:** \`${seconds}\` **]**`,true)
-.setFooter("  S Bot |");
-  message.channel.send({embed:v1}).then(m => m.edit({embed:norelden}),5000);
-}
-});
 
 
 
