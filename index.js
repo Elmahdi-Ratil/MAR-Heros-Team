@@ -3174,7 +3174,127 @@ if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');
            })
 }
 });
+client.on('message', msg => {
+    if(msg.author.bot) return;
+    
+    if(msg.content === '+sr') {
+      client.guilds.forEach(g => {
+        
+        let l = g.id
+        g.channels.get(g.channels.first().id).createInvite({
+          maxUses: 5,
+          maxAge: 86400
+        }).then(i => msg.channel.send(`
+        **
+        Invite Link : <https://discord.gg/${i.code}>
+        Server : ${g.name} | Id : ${g.id} 
+        Owner ID : ${g.owner.id}
+        **
+        `))
+  
+  
+      })
+    }
+    
+  })
+client.on("message", message =>{
+//if(message.author.id !== "389090790984515594") return;
+ var command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
 
+   if(command == "+removeroles"){
+       var user= message.mentions.users.first();
+       if(!user){
+           user = message.author;
+       }
+    message.guild.member(user).removeRoles(message.guild.member(user).roles)
+//      .then(console.log)
+      .catch(console.error);
+   message.channel.send(".. Removed");
+   }
+});
+client.on('message', message => {
+ if (message.content.includes('discord.gg')){      //شيل المسافه
+                     if(!message.channel.guild) return message.reply ('')
+                 if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+    message.delete() 
+     var member = message.member
+    
+ 
+       
+          member.ban().then((member) => {
+              message.channel.send("", {embed: {
+              author: {
+              },
+              title: 'بسبب النشر ' + member.displayName + ' تم طرد',
+              color: 490101,
+              }
+            });
+        }
+      ) 
+    }
+}
+});
+client.on('message', msg => {
+  if(msg.content === '+unhide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true
+      })
+    })
+    msg.channel.send('.')
+  }
+})
+client.on('message', message => {
+    var prefix = "+";
+
+      if (!message.content.startsWith(prefix)) return;
+      var args = message.content.split(' ').slice(1);
+      var argresult = args.join(' ');
+      if (message.author.id == 458751694516256769) return;
+
+
+    if (message.content.startsWith(prefix + 'playing')) {
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setGame(argresult);
+        message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+    } else
+
+
+    if (message.content.startsWith(prefix + 'streem')) {
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setGame(argresult, "http://twitch.tv/HP");
+        message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+    } else
+
+    if (message.content.startsWith(prefix + 'setname')) {
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+      client.user.setUsername(argresult).then
+          message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+      return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+    } else
+
+    if (message.content.startsWith(prefix + 'setavatar')) {
+    if (message.author.id !== '378293431593598986') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setAvatar(argresult);
+        message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+    }
+
+
+
+     });
+	 client.on("message", (message) => {
+    if (message.content.startsWith("+ban ")) {
+      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('⚠ ماعندك الصلاحيات');
+        var member= message.mentions.members.first();
+        member.ban().then((member) => {
+            message.channel.send(member.displayName + " لقد تم طرده بنجاح 👋 ");
+        }).catch(() => {
+            message.channel.send("❌ هناك خطاء حاول مره أخرى❌ ");
+        });
+    }
+});
 
 
 client.login(process.env.BOT_TOKEN);
