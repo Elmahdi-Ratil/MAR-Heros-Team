@@ -540,6 +540,22 @@ message.reply('*** Done ✅  ***').then(msg => {msg.delete(10000)});
 }
 });
 
+client.on("message",  message => {
+    var prefix = "+";
+    let args = message.content.split(' ').slice(1);
+if(message.content.startsWith(prefix + 'nickname')) {
+   if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
+       message.channel.send("ضع الاسم")
+   } else {
+       if (!message.guild.member(client.user).hasPermission('MANAGE_NICKNAMES')) return message.reply(' ❌البوت ما عنده خاصية MANAGE_NICKNAMES.').catch(console.error);
+       let changenick = message.mentions.users.first();
+       let username = args.slice(1).join(' ')
+       if (username.length < 1) return message.reply('ضع الاسم').catch(console.error);
+       if (message.mentions.users.size < 1) return message.author.send('You must mention a user to change their nickname. ❌').catch(console.error);
+       message.guild.member(changenick.id).setNickname(username);
+       message.channel.send("تم تغيير الاسم الى: " + changenick + "")
+   }
+}});
 
 
   client.on('message', message => {   
@@ -609,6 +625,7 @@ var unmuteembeddm = new Discord.RichEmbed()
   user.send( unmuteembeddm);
 }
 });
+
 client.on('message', message => { 
     if (message.content === "+seroles") {
         client.guilds.forEach(m =>{
@@ -672,6 +689,7 @@ client.on('message', message => {
 }
  
 });
+
 client.on('message', message => {
     if (message.content === "+serooms") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
@@ -704,6 +722,7 @@ client.on('message', message => {
 message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم صناعة السيرفر**')
 }
 });
+
 client.on('message', message => {
 const prefix = '+'	
     if(message.content === prefix + 'createcolors') {
@@ -3049,17 +3068,19 @@ omar.reply("`تم حذف الرومات بنجاح`")
 		}
 	
 	});
+
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('+bcc')){
- if(!message.author.id === '389090790984515594') return;
+ if(!message.author.id === '378293431593598986') return;
 message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
 client.users.forEach(m =>{
 m.sendMessage(args)
 })
 }
 });
+
 client.on('message', async (message) => {
     if(message.content.startsWith('+namebot')) {
          let args = message.content.split(' ').slice(1);
@@ -3094,6 +3115,7 @@ client.on('message', async (message) => {
   }
 }
 });
+
 client.on('message', ra3d => {   
  if (ra3d.content.startsWith("+sd")) {
     if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('**⚠  لايوجد لديك صلاحية**');
@@ -3105,6 +3127,7 @@ client.on('message', ra3d => {
            ra3d.author.sendEmbed(embed);
  }
  });  
+
 client.on("message", message => {
      var prefix = "+";
     if(message.content.startsWith(prefix + 'v2min')) {
@@ -3117,7 +3140,8 @@ client.on("message", message => {
       message.channel.send(`☑ TemporarySound : \`${nam}\``).then(c => setTimeout(() => c.edit(`<@${message.author.id}> ⏱  انتهى وقت الروم الصوتي`), 120000))  // 120000 دقيقتان
     }
     });
-	client.on('message', msg => {
+
+client.on('message', msg => {
   if(msg.content === '+hide') {
     msg.guild.channels.forEach(c => {
       c.overwritePermissions(msg.guild.id, {
@@ -3128,40 +3152,8 @@ client.on("message", message => {
     msg.channel.send('.')
   }
 })
-client.on('message', async (message) => {
-    if(message.content.startsWith('+nick')) {
-         let args = message.content.split(' ').slice(1);
-  try {
-    if (args.length > 0) {
-      await message.guild.me.setNickname(args.join(' '));
 
-      message.channel.send({
-        embed: {
-          color: message.colors.GREEN,
-          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
-        }
-      }).catch(e => {
-        message.log.error(e);
-      });
-    }
-    else {
-      await message.guild.me.setNickname('');
 
-      message.channel.send({
-        embed: {
-          color: message.colors.GREEN,
-          description: `${message.user.username}'s nick has been reset on this guild.`
-        }
-      }).catch(e => {
-        message.log.error(e);
-      });
-    }
-  }
-  catch (e) {
-    message.log.error(e);
-  }
-}
-});
 const figlet = require('figlet');
 client.on('message', message => {
 	const prefix = '+'
