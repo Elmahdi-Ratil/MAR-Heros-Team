@@ -63,6 +63,7 @@ client.on("message", message => {
 ('+clear ' , 'لمسح الشات حد اقصى 200رساله') 
 ('+serooms' , 'انشاء رومات جاهزه')
 ('+seroles' , 'انشاء رتب جاهزه')
+('+e' , 'كود يسويلك كلامك بايموجي')
 ('+removerooms' , 'لازالة جميع الرومات')
 ('+createcolors' , 'لانشاء 137 الوان')
 ('+deletecolors' , 'لحذف جميع الوان')
@@ -3127,6 +3128,41 @@ client.on("message", message => {
     msg.channel.send('.')
   }
 })
+client.on('message', async (message) => {
+    if(message.content.startsWith('+nick')) {
+         let args = message.content.split(' ').slice(1);
+  try {
+    if (args.length > 0) {
+      await message.guild.me.setNickname(args.join(' '));
+
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick is now set to **${args.join(' ')}** on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+    else {
+      await message.guild.me.setNickname('');
+
+      message.channel.send({
+        embed: {
+          color: message.colors.GREEN,
+          description: `${message.user.username}'s nick has been reset on this guild.`
+        }
+      }).catch(e => {
+        message.log.error(e);
+      });
+    }
+  }
+  catch (e) {
+    message.log.error(e);
+  }
+}
+});
+const figlet = require('figlet');
 client.on('message', message => {
 	const prefix = '+'
 if (message.content.startsWith(prefix + 'tag')) {
@@ -3315,7 +3351,44 @@ let norelden = new Discord.RichEmbed()
   message.channel.send({embed:v1}).then(m => m.edit({embed:norelden}),5000);
 }
 });
-
+const codes = {
+    ' ': '   ',
+    '0': '0⃣',
+    '1': '1⃣',
+    '2': '2⃣',
+    '3': '3⃣',
+    '4': '4⃣',
+    '5': '5⃣',
+    '6': '6⃣',
+    '7': '7⃣',
+    '8': '8⃣',
+    '9': '9⃣',
+    '!': '❕',
+    '?': '❔',
+    '#': '#⃣',
+    '*': '*⃣'
+  };
+  
+  'abcdefghijklmnopqrstuvwxyz'.split('').forEach(c => {
+    codes[c] = codes[c.toUpperCase()] = ` :regional_indicator_${c}:`;
+  });
+  
+  
+  client.on('message' , async message => {
+         if(message.content.startsWith(prefix + "e")) {
+            let args = message.content.split(" ").slice(1);
+    if (args.length < 1) {
+      message.channel.send('You must provide some text to emojify!');
+  }
+  
+  message.channel.send(
+      args.join(' ')
+          .split('')
+          .map(c => codes[c] || c)
+          .join('')
+  );
+  };
+  });
 
 
 
