@@ -17,11 +17,12 @@ client.on('ready', () => {
   console.log('')
   console.log('╚[════════════════════════════════════]╝')
 });
-client.on('ready', () => {
-     client.user.setActivity("+help",{type: 'WATCHING'})
+client.on('ready', function() {
+	console.log(`i am ready ${client.user.username}`);
+    client.user.setGame('4Mido King || +help ');
+	});
 
-});
-});
+
 client.on("message", message => {
     if (message.content === (prefix + "help")) {
      const embed = new Discord.RichEmbed() 
@@ -3306,17 +3307,7 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 }
 }
 });
-client.on("roleCreate", rc => {
-  const channel = rc.guild.channels.find("name", "log") //تقدر تغير اسم الشات
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rc.guild.name)
-  .setDescription(`***Created Role Name : *** **${rc.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
+
  
 
 client.login(process.env.BOT_TOKEN);
