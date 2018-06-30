@@ -431,23 +431,7 @@ client.on("message", (message) => {
                message.channel.sendMessage(`✅ تـم إنـشـاء روم صـوتي بـأسـم **{  ${args}  }**`)
 
            }
-           });		   
-		   
-client.on("message", (message) => {
-                 if (message.content.startsWith('+delete')) {
-if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
-                     if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
-
-                     let args = message.content.split(' ').slice(1);
-                     let channel = message.client.channels.find('name', args.join(' '));
-                     if (!channel) return message.reply('**لا يوجد روم صوتي او شات كتابي بهذا الأسم**')
-                     channel.delete()
-                     message.channel.sendMessage('❌ تـم حـذف الـروم الـصوتـي او الـشـات الـكـتـابـي')
-                 }
-             });		   
-const math = require('math-expression-evaluator');
-const stripIndents = require('common-tags').stripIndents;
-
+           });
 client.on('message', msg => {
 	const prefix = '+'
  if (msg.content.startsWith(prefix + 'calculator')) {
