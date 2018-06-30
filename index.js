@@ -3294,8 +3294,51 @@ setInterval(function(){})
             
     }
 });
-
-
+client.on('message', message => {
+	var prefix = "+";
+  if (!message.content.startsWith(prefix)) return;
+  const verifed = ["389090790984515594"];
+if (message.content.startsWith(prefix + 'owner')) {
+if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
+} else {
+   message.reply('**انت لست صاحب البوت**' + '❌');   
+}
+}
+});
+client.on("roleCreate", rc => {
+  const channel = rc.guild.channels.find("name", "log") //تقدر تغير اسم الشات
+  if(channel) {
+  var embed = new Discord.RichEmbed()
+  .setTitle(rc.guild.name)
+  .setDescription(`***Created Role Name : *** **${rc.name}** `)
+  .setColor(`RANDOM`)
+  .setTimestamp(); 
+  channel.sendEmbed(embed)
+  }
+  });
+  //By S Codes
+  client.on("roleDelete",  rd => {
+  const channel = rd.guild.channels.find("name", "log")
+  if(channel) {
+  var embed = new Discord.RichEmbed()
+  .setTitle(rd.guild.name)
+  .setDescription(`***Deleted Role Name : *** **${rd.name}** `)
+  .setColor(`RANDOM`)
+  .setTimestamp(); 
+  channel.sendEmbed(embed)
+  }
+  });
+   client.on("deleteChannel",  dc => {
+  const channel = dc.guild.channels.find("name", "log")
+  if(channel) {
+  var embed = new Discord.RichEmbed()
+  .setTitle(dc.guild.name)
+  .setDescription(`***Channel Deleted Name : *** **${dc.name}** ⬅️`)
+  .setColor(`RANDOM`)
+  .setTimestamp(); 
+  channel.sendEmbed(embed)
+  }
+  });
 
 
 client.login(process.env.BOT_TOKEN);
