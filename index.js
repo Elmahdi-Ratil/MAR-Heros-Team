@@ -3261,7 +3261,17 @@ client.on('message', ( message ) => {
 });
 
 
-
+client.on('message', message => {
+	var prefix = "+";
+  if (!message.content.startsWith(prefix)) return;
+  const verifed = ["389090790984515594"];
+if (message.content.startsWith(prefix + 'owner')) {
+if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
+} else {
+   message.reply('**انت لست صاحب البوت**' + '❌');   
+}
+}
+});
 
 
 
