@@ -50,7 +50,6 @@ client.on("message", message => {
 ('+calculator ' , 'الالة الحسابية')
 ('+content ' , 'لارسال اقتراح لصحاب البوت')
 ('+uptime ' , 'لمعرفه مده تشغيل البوت')
-('+members ' , 'الاشخاص')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
 ('+image ' , 'لاضهار صورتك')
 ('roleadd ' , 'لاعطاء رتبه')
@@ -3529,26 +3528,7 @@ client.on('message', message => {
     }
 });
 
-client.on('message',function(message) {
-  if (message.author.bot) return;
 
-
-                  if(!message.channel.guild) return;
-
-                    if (message.content === prefix + "members") {
- const embed = new Discord.RichEmbed()
-
-    .setDescription(`**Members info ?
- online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
- dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
- idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
- membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
- bots: ${message.guild.members.filter(m=>m.user.bot).size} **`)
-         message.channel.send({embed});
-
-
-    }
-      }); 
 client.on('message',function(message) {
     let w = ['حجرة','ورقة','مقص'];
    if(message.content.startsWith(prefix + "rps")) {
