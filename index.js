@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const index = new Discord.Client();
+const bot = new Discord.Client();
 const client = new Discord.Client();
 const prefix = '+'
 client.on('ready', () => {
@@ -3330,7 +3330,7 @@ client.on("roleCreate", rc => {
   channel.sendEmbed(embed)
   }
   });
- client.on("deleteChannel",  dc => {
+   client.on("deleteChannel",  dc => {
   const channel = dc.guild.channels.find("name", "log")
   if(channel) {
   var embed = new Discord.RichEmbed()
@@ -3340,6 +3340,7 @@ client.on("roleCreate", rc => {
   .setTimestamp(); 
   channel.sendEmbed(embed)
   }
-  }
+  });
+  
 
 client.login(process.env.BOT_TOKEN);
