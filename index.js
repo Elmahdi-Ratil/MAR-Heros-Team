@@ -18,7 +18,7 @@ client.on('ready', () => {
   console.log('╚[════════════════════════════════════]╝')
 });
 client.on('ready', () => {
-     client.user.setActivity("+help",{type: 'WATCHING'})
+     client.user.setActivity("+help",{type: 'Mido King'})
 
 });
 client.on("message", message => {
