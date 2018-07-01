@@ -98,7 +98,7 @@ client.on('message', message => {
 const dot = new Discord.Client();
 client.on('message', message => {
     
-    if (message.content === "M") {
+    if (message.content.startsWith(prefix +"M") {
         setInterval(function(){
         message.edit('**✱➼**')    
         message.edit('**✱➼ M**')    
@@ -115,7 +115,7 @@ client.on('message', message => {
         }, 1000)
     }
     
-})
+});
 
 
 client.on('message', message => {
