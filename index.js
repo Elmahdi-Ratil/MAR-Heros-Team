@@ -95,28 +95,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
-const dot = new Discord.Client();
-client.on('message', message => {
-    
-    if (message.content.startsWith(prefix +"M") {
-        setInterval(function(){
-        message.edit('**✱➼**')    
-        message.edit('**✱➼ M**')    
-        message.edit('**✱➼ MA**')
-        message.edit('**✱➼ MAH**')
-        message.edit('**✱➼ MAHD**')
-        message.edit('**✱➼ MAHDI**')
-        message.edit('**✱➼ MAHDI.**')
-        message.edit('**✱➼ MAHDI.K**')
-        message.edit('**✱➼ MAHDI.KI**')
-        message.edit('**✱➼ MAHDI.KIN**')
-        message.edit('**✱➼ MAHDI.KING**')
-         
-        }, 1000)
-    }
-    
-});
-
 
 client.on('message', message => {
 	const prefix = '+'
@@ -3538,17 +3516,6 @@ const codes = {
   );
   };
   });
-client.on('message', message => {
-	var prefix = "+";
-  if (!message.content.startsWith(prefix)) return;
-  const verifed = ["389090790984515594"];
-if (message.content.startsWith(prefix + 'owner')) {
-if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
-} else {
-   message.reply('**انت لست صاحب البوت**' + '❌');   
-}
-}
-});
 client.on("roleCreate", rc => {
   const channel = rc.guild.channels.find("name", "log") //تقدر تغير اسم الشات
   if(channel) {
@@ -3635,29 +3602,7 @@ client.on('guildMemberRemove', member => {
        .setTimestamp();
      channel.send({embed:embed});
 });
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
 
-    if(command === "clear") {
-        const emoji = client.emojis.find("name", "log")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
-    }
-}
-});
 client.on('message', message => {
     var prefix = "+"
     if (message.content === prefix + "data") {
@@ -3668,16 +3613,6 @@ client.on('message', message => {
         message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
     }
 });
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('https://')){
-      if(!message.member.hasPermission('ADMINISTRATOR'))
-        message.delete()
-    return message.reply(`** يمنع نشر الروابط بهذا السيرفر  :angry: ! **`)
-    }
-});
-
-
 client.on('message',function(message) {
     let w = ['حجرة','ورقة','مقص'];
    if(message.content.startsWith(prefix + "rps")) {
@@ -3969,11 +3904,21 @@ message.channel.sendEmbed(embed).then();
                                    
                                    }); 
 
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('discord.gg/')){
+        message.delete()
+    return message.reply(`**يمنع نشر روابط الدسكورد في السيرفر هنا **`)
+    }
+});
 
-
-
- 
-
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('youtube.com/')){
+        message.delete()
+    return message.reply(`**يمنع نشر روابط اليوتيوب هنا **`)
+    }
+});
 
 
 
