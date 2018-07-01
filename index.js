@@ -3931,7 +3931,7 @@ client.on("ready", () => {
             color : "RANDOM"
         });
     },1000)
-}).login(process.env.BOT_TOKEN);
+});
 
 
 
