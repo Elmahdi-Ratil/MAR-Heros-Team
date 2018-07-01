@@ -391,7 +391,7 @@ client.on("message", message => {
       message.reply(` ** انت في المستوى ${userData.level}  مع ${userData.points} نقاط . ** `).then(m => m.delete(100000));
 
   }
-  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+  fs.writeFile("./index.json", JSON.stringify(points), (err) => {
     if (err) console.error(err)
   });
 
