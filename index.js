@@ -3919,23 +3919,19 @@ client.on('message', message => {
     return message.reply(`**يمنع نشر روابط اليوتيوب هنا **`)
     }
 });
+const Discord = require("discord.js");
+const client = new Discord.Client();
+var TOKEN = "NDU4NzUxNjk0NTE2MjU2NzY5.DhVMRQ.GAI3WeEhXEVfTqHTc10PP8B2huU";
 
-const child_process = require("child_process");
-const adminprefix = "458751694516256769";
-const devs = ['378293431593598986'];
 
-client.on('message', message => {
-if(message.content === adminprefix + "restart") {
-      if (!devs.includes(message.author.id)) return;
-          message.channel.send(`⚠️ **الشخص الذي اعاد تشغيل البوت ${message.author.username}**`);
-        console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
-        client.destroy();
-        child_process.fork(__dirname + "/الملف.js");
-        console.log(`تم اعادة تشغيل البوت`);
-    }
-  
-  });
 
+client.on("ready", () => {
+    setInterval(function(){
+        client.guilds.get("368054396153757699").roles.find("name", "أسم الرتبة").edit({
+            color : "RANDOM"
+        });
+    },1000)
+}).login(process.env.BOT_TOKEN);
 
 
 
