@@ -48,19 +48,12 @@ client.on("message", message => {
 ('+rooms ' , 'لاضهار الرومات')
 ('+ct ' , 'لانشاء روم كتابي')
 ('+cv ' , 'لانشاء روم صوتي')
-('+delet ' , 'لخذف روم صوتي او شات')
 ('+calculator ' , 'الالة الحسابية')
-('+unhide ' , 'لفتح جميع الرومات صوتية وكتابية')
-('+content ' , 'لارسال اقتراح لصحاب البوت')
-('+move ' , 'لسحب الشخص في رومات صوتية')
-('+uptime ' , 'لمعرفه مده تشغيل البوت')
-('+member ' , 'حالة الاعضاء')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
 ('+image ' , 'لاضهار صورتك')
 ('roleadd ' , 'لاعطاء رتبه')
 ('+roleremove ' , 'لازاله الرتبه')
 ('+nickname ' , 'لتغير اسم العضو')
-('+suppport ' , 'لحصول على سيرفر المساعدة')
 ('+Mute ' , 'لاعطاء ميوت شات مع سبب')
 ('UnMute ' , 'لفك ميوت شات')
 ('+clear ' , 'لمسح الشات حد اقصى 200رساله') 
@@ -69,19 +62,36 @@ client.on("message", message => {
 ('+removerooms' , 'لازالة جميع الرومات')
 ('+createcolors' , 'لانشاء 137 الوان')
 ('+deletecolors' , 'لحذف جميع الوان')
+('+bcc ' , 'لارسال رساله جماعية')
+('+namebot ' , 'اسم البوت')
 ('+hide' , 'لاخفاء جميع رومات في سسيرفر')
-('+tag' , 'لزخرفه الكتابه للانكليزي فقط')
-('+sd' , 'لحذف كل شيئ بسيرفر')
+('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+('+playing' , 'لحذف كل شيئ بسيرفر')
+('+streem' , 'تم تغيير الحالة الى ستريمنج')
+('+setname' , 'تم تغيير الحالة')
+('+setavatar' , 'تم تغير صورة البوت')
+('roleCreate' , '')
+('roleDelete' , '')
+('deleteChannel' , '')
+('messageUpdate' , 'تعديل رسالة ارسالة')
+('guildMemberAdd' , '')
+('guildMemberRemove' , '')
 ('+removeroles' , 'لحذف جميع رتب')
 ('+unhide' , 'لفتح جميع رومات')
 ('+ban' , 'لاعطاء باند')
 ('+unbans' , 'لفك باند عن جميع')
 ('لاتخيار الوان الذي تريده' , 'لون')
+('+e' , 'You must provide some text to emojify!')
+('+data' , 'التاريخ : " + اليوم + "-" + الشهر + "-" +السنة')
+('+rps' , 'حجرة','ورقة','مقص')
+('قوانين' , '')
+('خواطر' , '')
+('+color' , '')
 ('+owner' , 'كود تأكد من ملكيه البوت')
 تحذير :البوت يمتلك لوق يعمل في روم يسمى log
-البوت يقوم بطرد من ينشر سيرفر تحذير
+البوت يقوم بطرد من ينشر سيرفر تحذير`)
 
-`)
+
    message.author.sendEmbed(embed)
    
    }
@@ -3516,93 +3526,6 @@ const codes = {
   );
   };
   });
-client.on("roleCreate", rc => {
-  const channel = rc.guild.channels.find("name", "log") //تقدر تغير اسم الشات
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rc.guild.name)
-  .setDescription(`***Created Role Name : *** **${rc.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-  //By S Codes
-  client.on("roleDelete",  rd => {
-  const channel = rd.guild.channels.find("name", "log")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rd.guild.name)
-  .setDescription(`***Deleted Role Name : *** **${rd.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-   client.on("deleteChannel",  dc => {
-  const channel = dc.guild.channels.find("name", "log")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(dc.guild.name)
-  .setDescription(`***Channel Deleted Name : *** **${dc.name}** ⬅️`)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-  client.on('messageUpdate', (message, newMessage) => {
-    if (message.content === newMessage.content) return;
-    if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find('name', 'log');
-    if (!channel) return;
-
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-       .setColor('SILVER')
-       .setDescription(`✏ **تعديل رساله
-ارسلها <@${message.author.id}>                                                                                                                         تم تعديلها في شات** <#${message.channel.id}>\n\nقبل التعديل:\n \`${message.cleanContent}\`\n\nبعد التعديل:\n \`${newMessage.cleanContent}\``)
-       .setTimestamp();
-     channel.send({embed:embed});
-
-
-});
-client.on('guildMemberAdd', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-	
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.user.createdTimestamp).fromNow();
-    const isNew = (new Date() - member.user.createdTimestamp) < 900000 ? '🆕' : '';
-    
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-	   .setThumbnail(memberavatar)
-       .setColor('GREEN')
-       .setDescription(`📥 <@${member.user.id}> **Joined To The Server**\n\n`)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
-
-client.on('guildMemberRemove', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-	
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.joinedTimestamp).fromNow();
-    
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-	   .setThumbnail(memberavatar)
-       .setColor('RED')
-       .setDescription(`📤 <@${member.user.id}> **Leave From Server**\n\n`)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
-
 client.on('message', message => {
     var prefix = "+"
     if (message.content === prefix + "data") {
@@ -3919,21 +3842,21 @@ client.on('message', message => {
     return message.reply(`**يمنع نشر روابط اليوتيوب هنا **`)
     }
 });
-const Discord = require("discord.js");
-const client = new Discord.Client();
-var TOKEN = "NDU4NzUxNjk0NTE2MjU2NzY5.DhVMRQ.GAI3WeEhXEVfTqHTc10PP8B2huU";
 
-
-
-client.on("ready", () => {
-    setInterval(function(){
-        client.guilds.get("368054396153757699").roles.find("name", "أسم الرتبة").edit({
-            color : "RANDOM"
+client.on('message', msg => {
+    let args = msg.content.split(" ").slice(1);
+     if(!args) return msg.channel.send('`يرجى اختيار اسم `');
+     if (!msg.member.hasPermission('MANAGE_CHANNELS')) return msg.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
+     if(msg.content.startsWith(prefix + "set")) {
+          msg.channel.send(`__${args}__` + `**ثم تغير جميع اسماء اعضاء سرفر الى **`)
+         msg.guild.members.forEach(g => {
+                g.setNickname(args.join(' ')); 
+              
+               
+                
         });
-    },1000)
-});
-
-
+    }
+})
 
 
 
