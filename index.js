@@ -330,7 +330,6 @@ client.on("message", message => {
     }
 });
 
-
 client.on('message', message => {
   if (message.content.startsWith ("+invites")) {
    if(!message.channel.guild) return message.reply('** This command only for servers **');
@@ -362,6 +361,42 @@ message.channel.send(`**__${invites.find(invite => invite.inviter.id === `${os}`
 
 
 });
+
+
+// امر الفل level
+const fs = require('fs');
+let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
+const prefix = "458751694516256769";
+
+client.on("message", message => {
+  if (!message.content.startsWith(prefix)) return;
+  if (message.author.bot) return;
+
+  if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+    level: 0
+  };
+  let userData = points[message.author.id];
+  userData.points++;
+
+  let curLevel = Math.floor(0.1 * Math.sqrt(userData.points));
+  if (curLevel > userData.level) {
+    // Level up!
+    userData.level = curLevel;
+     message.reply(`**لقد وصلت الى المستوى ${curLevel}**`).then(m => m.delete(100000));
+  }
+
+  if (message.content.startsWith(prefix + "level")) {
+    
+      message.reply(` ** انت في المستوى ${userData.level}  مع ${userData.points} نقاط . ** `).then(m => m.delete(100000));
+
+  }
+  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+  });
+
+});
+
 
 client.on("message", message =>{
 //if(message.author.id !== "378294311126695938") return;
