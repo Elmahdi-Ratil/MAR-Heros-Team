@@ -95,6 +95,29 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+const dot = new Discord.Client();
+client.on('message', message => {
+    
+    if (message.content === "M") {
+        setInterval(function(){
+        message.edit('**✱➼**')    
+        message.edit('**✱➼ M**')    
+        message.edit('**✱➼ MA**')
+        message.edit('**✱➼ MAH**')
+        message.edit('**✱➼ MAHD**')
+        message.edit('**✱➼ MAHDI**')
+        message.edit('**✱➼ MAHDI.**')
+        message.edit('**✱➼ MAHDI.K**')
+        message.edit('**✱➼ MAHDI.KI**')
+        message.edit('**✱➼ MAHDI.KIN**')
+        message.edit('**✱➼ MAHDI.KING**')
+         
+        }, 1000)
+    }
+    
+})
+
+
 client.on('message', message => {
 	const prefix = '+'
 var args = message.content.split(" ").slice(1);    
