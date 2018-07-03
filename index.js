@@ -84,6 +84,7 @@ client.on("message", message => {
 ('+data' , 'التاريخ : " + اليوم + "-" + الشهر + "-" +السنة')
 ('+rps' , 'حجرة','ورقة','مقص')
 ('قوانين' , '')
+('+voice' , 'كود الفويس اونلاين بشكل حلو')
 ('خواطر' , '')
 ('+color' , '')
 ('+owner' , 'كود تأكد من ملكيه البوت')
@@ -177,6 +178,14 @@ client.on('message', function(msg) {
     }
   });
 
+client.on("message", async function(message)  {
+let voiceMembers = message.guild.channels.get('462302884155883520');
+if(message.content.startsWith(prefix + "voice")) {
+    voiceMembers.sendMessage(`**الاعضاء المتواجدون حاليا : ${message.guild.members.filter(member => member.voiceChannel).size}**`);
+    voiceMembers.sendMessage('```\n'+message.guild.members.filter(member => member.voiceChannel).map(m => m.user.tag).join('\n') + '```');
+    
+}
+});
 
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
