@@ -31,6 +31,7 @@ client.on("message", message => {
          .setDescription(`
 
 
+('+roll ' , 'كود القرعة ') 
 ('+id ' , 'لعرض معلوماتك') 
 ('+server' , 'لمعلومات سيرفر') 
 ('رابط السيرفر الي تكتب الاوامر بيه' ,' رابط  ')
@@ -43,8 +44,8 @@ client.on("message", message => {
 ('+vc ' , 'كيك فويس')
 ('removeRoles ' , 'لحذف جميع رتب')
 ('+invites ' , 'لمعرفه عدد الاعضاء الذي دخلوا عبرك')
-('+rmutechannel ' , 'لقفل الشات')
-('+runmutechannel ' , 'لفتح الشات')
+('+mutechannel ' , 'لقفل الشات')
+('+unmutechannel ' , 'لفتح الشات')
 ('+rooms ' , 'لاضهار الرومات')
 ('+calculator ' , 'الالة الحسابية')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
@@ -394,7 +395,7 @@ client.on("message", message =>{
 client.on('message', message => {
 
 if (message.author.bot) return;
-    if (message.content === "+rmutechannel") {
+    if (message.content === "+mutechannel") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
@@ -405,7 +406,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
                message.reply("تم تقفيل الشات ✅ ")
            });
              }
-if (message.content === "+runmutechannel") {
+if (message.content === "+unmutechannel") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
@@ -419,6 +420,21 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
+});
+
+client.on('message', function(message) {
+    if(message.content.startsWith(prefix + 'roll')) {
+        let args = message.content.split(" ").slice(1);
+        if (!args[0]) {
+            message.channel.send('**حط رقم معين يتم السحب منه**');
+            return;
+            }
+    message.channel.send(Math.floor(Math.random() * args.join(' ')));
+            if (!args[0]) {
+          message.edit('1')
+          return;
+        }
+    }
 });
 
 client.on('message', message => {
