@@ -46,8 +46,6 @@ client.on("message", message => {
 ('+rmutechannel ' , 'لقفل الشات')
 ('+runmutechannel ' , 'لفتح الشات')
 ('+rooms ' , 'لاضهار الرومات')
-('+ct ' , 'لانشاء روم كتابي')
-('+cv ' , 'لانشاء روم صوتي')
 ('+calculator ' , 'الالة الحسابية')
 ('+serverimage ' , 'لاضهار صوره السيرفر')
 ('+image ' , 'لاضهار صورتك')
@@ -270,17 +268,7 @@ client.on('message', message => {
      })
     }
   });
-  function timeCon(time) {
-    let days = Math.floor(time % 31536000 / 86400)
-    let hours = Math.floor(time % 31536000 % 86400 / 3600)
-    let minutes = Math.floor(time % 31536000 % 86400 % 3600 / 60)
-    let seconds = Math.round(time % 31536000 % 86400 % 3600 % 60)
-    days = days > 9 ? days : '0' + days
-    hours = hours > 9 ? hours : '0' + hours
-    minutes = minutes > 9 ? minutes : '0' + minutes
-    seconds = seconds > 9 ? seconds : '0' + seconds
-    return `${days > 0 ? `${days}:` : ''}${(hours || days) > 0 ? `${hours}:` : ''}${minutes}:${seconds}`
-};
+
 
 client.on('message', message => {
 	const prefix = '+'
@@ -386,7 +374,7 @@ message.channel.send(`**__${invites.find(invite => invite.inviter.id === `${os}`
 });
 
 client.on("message", message =>{
-//if(message.author.id !== "378294311126695938") return;
+//if(message.author.id !== "368054396153757699") return;
  var command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
 
@@ -448,31 +436,6 @@ client.on('message', message => {
         message.channel.sendEmbed(embed);
     }
 });
-
-client.on("message", message => {
-           if (message.content.startsWith("+ct")) {
-             if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
-                       if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
-                   let args = message.content.split(" ").slice(1).join(" ")
-                   if (!args[1] || args[1 == " "]) return message.reply("يرجى كتابه اسم الشات الكتابي")
-               message.guild.createChannel(args, 'text');
-           message.channel.sendMessage(`✅ تـم إنـشـاء شـات كتابي بأسـم **{  ${args}  }**`)
-
-           }
-           });
-
-client.on("message", (message) => {
-           if (message.content.startsWith("+cv")) {
-             if(!message.channel.guild) return message.reply('هذا الأمر للسيرفرات فقط')
-                       if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("انت لا تمتلك صلاحيه `MANAGE_CHANNELS`");
-                  let args = message.content.split(" ").slice(1).join(" ")
-                 if (!args[1] || args[1 == " "]) return message.reply("يرجى كتابته اسم الروم الصوتي")
-               message.guild.createChannel(args, 'voice');
-               message.channel.sendMessage(`✅ تـم إنـشـاء روم صـوتي بـأسـم **{  ${args}  }**`)
-
-           }
-           });
-
 client.on('message', msg => {
 	const prefix = '+'
  if (msg.content.startsWith(prefix + 'calculator')) {
