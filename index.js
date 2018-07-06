@@ -1460,7 +1460,27 @@ const prefix = '+'
      .setColor('#502faf').setAuthor(`${message.author.username}'`, message.author.avatarURL).setDescription('``Colors Has Been Created``')});
     }
 	});
-	
+
+client.on('message', omar => {
+var prefix = "+";
+if(omar.content.split(' ')[0] == prefix + 'removerooms') {  // delete all channels
+if (!omar.channel.guild) return;
+if(!omar.guild.member(omar.author).hasPermission("MANAGE_CHANNELS")) return omar.reply("**You Don't Have ` MANAGE_CHANNELS ` Permission**");
+if(!omar.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return omar.reply("**I Don't Have ` MANAGE_CHANNELS ` Permission**");
+omar.guild.channels.forEach(m => {
+m.delete();
+});
+}
+if(omar.content.split(' ')[0] == prefix + '1') { // delete all roles
+if (!omar.channel.guild) return;
+if(!omar.guild.member(omar.author).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**You Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
+if(!omar.guild.member(client.user).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) return omar.reply("**I Don't Have ` MANAGE_ROLES_OR_PERMISSIONS ` Permission**");
+omar.guild.roles.forEach(m => {
+m.delete();
+});// omar jedol / Codes
+omar.reply("`تم حذف الرومات بنجاح`")
+}// omar jedol / Codes
+});
 
 	client.on('message', async message => {
 		
@@ -3131,17 +3151,6 @@ client.on('message', async (message) => {
 }
 });
 
-client.on('message', ra3d => {   
- if (ra3d.content.startsWith("+sd")) {
-    if(!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('**⚠  لايوجد لديك صلاحية**');
-     ra3d.guild.roles.forEach(r => { r.delete() }) 
-     ra3d.guild.channels.forEach(c => { c.delete() })
-                let embed = new Discord.RichEmbed()
-            .setColor('#fd0101')
-            .setDescription('تم حذف كل شي في السيرفر✅')
-           ra3d.author.sendEmbed(embed);
- }
- });  
 
 client.on("message", message => {
      var prefix = "+";
@@ -3195,12 +3204,6 @@ client.on('message', message => {
 
 
      });
-
-
-
-
-
-
 
 
 
@@ -3849,21 +3852,6 @@ client.on('message', message => {
     return message.reply(`**يمنع نشر روابط اليوتيوب هنا **`)
     }
 });
-
-client.on('message', msg => {
-    let args = msg.content.split(" ").slice(1);
-     if(!args) return msg.channel.send('`يرجى اختيار اسم `');
-     if (!msg.member.hasPermission('MANAGE_CHANNELS')) return msg.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
-     if(msg.content.startsWith(prefix + "set")) {
-          msg.channel.send(`__${args}__` + `**ثم تغير جميع اسماء اعضاء سرفر الى **`)
-         msg.guild.members.forEach(g => {
-                g.setNickname(args.join(' ')); 
-              
-               
-                
-        });
-    }
-})
 
 
 
