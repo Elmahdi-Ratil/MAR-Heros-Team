@@ -42,7 +42,7 @@ client.on("message", message => {
 ('+v2min ' , 'لانشاء روم مؤقت بتأكيد')
 ('+ping ' , 'سرعه بوت')
 ('+vc ' , 'كيك فويس')
-('removeRoles ' , 'لحذف جميع رتب')
+('removeRoles+1 ' , 'لحذف جميع رتب')
 ('+invites ' , 'لمعرفه عدد الاعضاء الذي دخلوا عبرك')
 ('+mutechannel ' , 'لقفل الشات')
 ('+unmutechannel ' , 'لفتح الشات')
