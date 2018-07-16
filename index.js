@@ -71,8 +71,6 @@ client.on("message", message => {
 ('setname ', 'لتم تغير الأسم')
 
 
-('sar7-1' , 'لمصارحة الشخص بدون ما يطلعله اسمك')
-('sar7-2' , 'لمصارحة الشخص ويطلعله اسمك')
 ('roleCreate' , '')
 ('roleDelete' , '')
 ('deleteChannel' , '')
