@@ -3855,64 +3855,6 @@ client.on('message', message => {
 
 
 
-        client.on('message', function(message) {
-    if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-            let command = message.content.split(" ")[0];
-        if(message.content.includes('discord.gg')){// gg شيل المسافه الي بين النقطق وال
-        if(!message.channel.guild) return;
-        message.delete()
-           if(!message.channel.guild) return message.reply('** This command only for servers**');
-     message.member.addRole(message.guild.roles.find('name', 'Muted'));
-    const embed500 = new Discord.RichEmbed()
-      .setTitle(" - Alert")
-            .addField(`**  You Have Been Muted **` , `**Reason : Sharing Another Discord Link**`)
-            .setColor("c91616")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL)
-        .setFooter(`${message.guild.name} `)
-     message.channel.send(embed500)
-   
-       
-    }
-    }
-})
-
-
-client.on('message', msg =>{
-  let args = msg.content.split(" ").slice(2).join(" ")
-  let men = msg.mentions.users.first()
-  let mas = msg.author
-  msg.delete();
-  let defineduser = msg.mentions.users.first();
-  if(msg.content.startsWith(prefix + 'sar7-1')) {
-      if(!args) return msg.channel.send("`Usage: " + prefix + 'sar7-1 <@someone> <message>`');
-      if(!men) return msg.channel.send("`Usage: " + prefix + 'sar7-1 <@someone> <message>`');
-        let Embed = new Discord.RichEmbed()
-   .setThumbnail('http://codeup.tk/s/do.php?img=30')
-   .addField('المصارح', 'مجهول', true)
-   .addField('تم مصارحتك',` ${args}`,)
-     .setColor(0xD4AF37)
-    defineduser.send(Embed)
-    msg.react("✅")
-}});
-
-client.on('message', msg =>{
-  let men = msg.mentions.users.first()
-  let args = msg.content.split(" ").slice(2).join(" ")
-  let user = msg.author
-  msg.delete();
-  let defineduser = msg.mentions.users.first();
-  if(msg.content.startsWith(prefix + 'sar7-2')) {
-      if(!args) return msg.channel.send("`Usage: " + prefix + 'sar7-2 <@someone> <message>`');
-      if(!men) return msg.channel.send("`Usage: " + prefix + 'sar7-2 <@someone> <message>`');
-        let Embed = new Discord.RichEmbed()
-   .setThumbnail('http://codeup.tk/s/do.php?img=30')
-   .addField('المصارح', `${user}`,)
-   .addField('تم مصارحتك', args,)
-     .setColor(0xD4AF37)
-    defineduser.send(Embed)
-    msg.react("✅")
-}});
 
 
 
