@@ -3837,13 +3837,7 @@ message.channel.sendEmbed(embed).then();
 
 
 
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg/')){
-        message.delete()
-    return message.reply(`**يمنع نشر روابط الدسكورد في السيرفر هنا **`)
-    }
-});
+
 
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
