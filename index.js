@@ -21,7 +21,13 @@ client.on('ready', () => {
      client.user.setActivity("+help",{type: 'WATCHING'})
 
 });
-
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('discord.gg/')){
+        message.delete()
+    return message.reply(`**يمنع نشر روابط الدسكورد في السيرفر هنا **`)
+    }
+});
 client.on("message", message => {
     if (message.content === (prefix + "help")) {
      const embed = new Discord.RichEmbed() 
