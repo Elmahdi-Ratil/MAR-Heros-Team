@@ -85,10 +85,8 @@ client.on("message", message => {
 ('+data' , 'التاريخ : " + اليوم + "-" + الشهر + "-" +السنة')
 ('+rps' , 'حجرة','ورقة','مقص')
 ('قوانين' , '')
-('+voice' , 'كود الفويس اونلاين بشكل حلو')
-('+members' , '')
+('+members' , 'كود الفويس اونلاين بشكل حلو')
 ('خواطر' , '')
- 
 ('+color' , '')
 ('+owner' , 'كود تأكد من ملكيه البوت')
 تحذير :البوت يمتلك لوق يعمل في روم يسمى log
@@ -180,15 +178,23 @@ client.on('message', function(msg) {
       msg.channel.send({embed:embed});
     }
   });
+client.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='+members')
 
-client.on("message", async function(message)  {
-let voiceMembers = message.guild.channels.get('459685168328867840');
-if(message.content.startsWith(prefix + "voice")) {
-    voiceMembers.sendMessage(`**الاعضاء المتواجدون حاليا : ${message.guild.members.filter(member => member.voiceChannel).size}**`);
-    voiceMembers.sendMessage('```\n'+message.guild.members.filter(member => member.voiceChannel).map(m => m.user.tag).join('\n') + '```');
-    
-}
-});
+      var IzRo = new Discord.RichEmbed()
+      .setThumbnail(message.author.avatarURL)
+      .setFooter(message.author.username, message.author.avatarURL) 
+      .setTitle(':tulip:| حالة اعضاء السيرفر')
+      .addBlankField(true)
+      .addField(':green_book:| Online',
+      `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+      .addField(':closed_book:| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
+      .addField(':orange_book:| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
+      .addField(':notebook:| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
+      .addField(':arrow_right:| Server Members',`${message.guild.memberCount}`)
+      message.channel.send(IzRo);
+    });
 client.on('guildMemberAdd', member => {
     var embed = new Discord.RichEmbed()
     .setAuthor(member.user.username, member.user.avatarURL)
@@ -369,23 +375,6 @@ client.on('message', message => {
                         }
                     });
 
-client.on('message', message => {
-              if (!message.channel.guild) return;
-      if(message.content =='+members')
-
-      var IzRo = new Discord.RichEmbed()
-      .setThumbnail(message.author.avatarURL)
-      .setFooter(message.author.username, message.author.avatarURL) 
-      .setTitle(':tulip:| حالة اعضاء السيرفر')
-      .addBlankField(true)
-      .addField(':green_book:| Online',
-      `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
-      .addField(':closed_book:| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
-      .addField(':orange_book:| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
-      .addField(':notebook:| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
-      .addField(':arrow_right:| Server Members',`${message.guild.memberCount}`)
-      message.channel.send(IzRo);
-    });
 
 client.on('message', message => {
   if (message.content.startsWith ("+invites")) {
