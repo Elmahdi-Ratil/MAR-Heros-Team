@@ -3878,5 +3878,4 @@ message.channel.sendEmbed(embed).then();
 
 
 
-
 client.login(process.env.BOT_TOKEN);
