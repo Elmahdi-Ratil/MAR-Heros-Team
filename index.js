@@ -3839,14 +3839,6 @@ message.channel.sendEmbed(embed).then();
 
 
 
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('youtube.com/')){
-        message.delete()
-    return message.reply(`**يمنع نشر روابط اليوتيوب هنا **`)
-    }
-});
-
 
 
 
