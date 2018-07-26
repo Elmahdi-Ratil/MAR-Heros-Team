@@ -40,7 +40,6 @@ client.on("message", message => {
 ('+bc ' , 'لارسال رساله جماعية')
 ('+v2min ' , 'لانشاء روم مؤقت بتأكيد')
 ('+ping ' , 'سرعه بوت')
-('+vc ' , 'كيك فويس')
 ('removeRoles+1 ' , 'لحذف جميع رتب')
 ('+invites ' , 'لمعرفه عدد الاعضاء الذي دخلوا عبرك')
 ('+mutechannel ' , 'لقفل الشات')
@@ -87,7 +86,9 @@ client.on("message", message => {
 ('+rps' , 'حجرة','ورقة','مقص')
 ('قوانين' , '')
 ('+voice' , 'كود الفويس اونلاين بشكل حلو')
+('+members' , '')
 ('خواطر' , '')
+ 
 ('+color' , '')
 ('+owner' , 'كود تأكد من ملكيه البوت')
 تحذير :البوت يمتلك لوق يعمل في روم يسمى log
@@ -368,36 +369,23 @@ client.on('message', message => {
                         }
                     });
 
-client.on("message", message => {
-    const command = message.content.split(" ")[0];
+client.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='+members')
 
-    if(command == prefix+"vc"){
-
-        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
-            return message.reply('you do not have permission to perform this action!');
-        }
-
-        var member = message.guild.members.get(message.mentions.users.array()[0].id);
-        if(!message.mentions.users){
-            message.reply("please mention the member")
-            return;
-        }
-
-    if(!member.voiceChannel){
-    message.reply("i can't include voice channel for member!")
-    return;
-    }
-              message.guild.createChannel('voicekick', 'voice').then(c => {
-                member.setVoiceChannel(c).then(() => {
-                    c.delete(305).catch(console.log)
-        
-
-
-    
-      });
-     });
-    }
-});
+      var IzRo = new Discord.RichEmbed()
+      .setThumbnail(message.author.avatarURL)
+      .setFooter(message.author.username, message.author.avatarURL) 
+      .setTitle(':tulip:| حالة اعضاء السيرفر')
+      .addBlankField(true)
+      .addField(':green_book:| Online',
+      `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+      .addField(':closed_book:| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
+      .addField(':orange_book:| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
+      .addField(':notebook:| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
+      .addField(':arrow_right:| Server Members',`${message.guild.memberCount}`)
+      message.channel.send(IzRo);
+    });
 
 client.on('message', message => {
   if (message.content.startsWith ("+invites")) {
@@ -625,7 +613,6 @@ if(message.content.startsWith(prefix + 'nickname')) {
 
   client.on('message', message => {   
 if (message.author.boss) return;
-var prefix = "+";
 if (!message.content.startsWith(prefix)) return;
 let command = message.content.split(" ")[0];
 command = command.slice(prefix.length);
@@ -1458,8 +1445,7 @@ const prefix = '+'
      .setColor('#502faf').setAuthor(`${message.author.username}'`, message.author.avatarURL).setDescription('``Colors Has Been Created``')});
     }
 	});
-
-client.on('message', omar => {
+	client.on('message', omar => {
 var prefix = "+";
 if(omar.content.split(' ')[0] == prefix + 'removerooms') {  // delete all channels
 if (!omar.channel.guild) return;
@@ -1479,7 +1465,7 @@ m.delete();
 omar.reply("`تم حذف الرومات بنجاح`")
 }// omar jedol / Codes
 });
-
+	
 	client.on('message', async message => {
 		
 			let args = message.content.split(' ').slice(1);
@@ -3267,7 +3253,7 @@ setInterval(function(){})
 client.on('message', message => {
 	var prefix = "+";
   if (!message.content.startsWith(prefix)) return;
-  const verifed = ["389090790984515594"];
+  const verifed = ["378293431593598986"];
 if (message.content.startsWith(prefix + 'owner')) {
 if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
 } else {
@@ -3647,7 +3633,7 @@ const secreT = [
 ]
 
  client.on('message', message => {
-   if (message.content.startsWith(prefix + "خواطر")) {
+   if (message.content.startsWith("خواطر")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
