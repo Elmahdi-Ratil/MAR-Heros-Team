@@ -3534,8 +3534,9 @@ const codes = {
   );
   };
   });
- var prefix = "+";
-    const x4 = new Discord.Client();
+
+
+  
     client.on('message', message => {
         if (message.content === prefix + "data") {
             if (!message.channel.guild) return message.reply('** This command only for servers **');  
@@ -3573,6 +3574,7 @@ var currentTime = new Date(),
                  message.channel.sendEmbed(Date15);
         }
     });
+
 client.on('message',function(message) {
     let w = ['حجرة','ورقة','مقص'];
    if(message.content.startsWith(prefix + "rps")) {
