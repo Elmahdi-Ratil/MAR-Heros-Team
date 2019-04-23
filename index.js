@@ -3826,7 +3826,7 @@ message.channel.sendEmbed(embed).then();
 
 
 
-
+var prefix = "+";
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "voicesetup")) {
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply(':x: ليس لديك الصلاحيات الكافية');
