@@ -2,12 +2,13 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const client = new Discord.Client();
 const prefix = '+'
+
   console.log('')
   console.log('')
   console.log('')
-  console.log(`servers! [ " ${client.guilds.size} " ]`);
-  console.log(`Users! [ " ${client.users.size} " ]`);
-  console.log(`channels! [ " ${client.channels.size} " ]`);
+  console.log(`! [ " ${client.guilds.size} " ]`);
+  console.log(`! [ " ${client.users.size} " ]`);
+  console.log(`! [ " ${client.channels.size} " ]`);
   console.log('╚[════════════════════════════════════]╝')
   console.log('')
   console.log('╔[════════════]╗')
