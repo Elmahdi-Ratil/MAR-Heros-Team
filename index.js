@@ -4,7 +4,7 @@ const client = new Discord.Client();
 const prefix = '+'
 
 client.on('ready', () => {
-     client.user.setActivity("+help",{type: 'playing M.A.R'})
+     client.user.setActivity(" M.A.R |+help",{type: 'playing'})
 
 });
 
