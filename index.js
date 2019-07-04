@@ -3,20 +3,7 @@ const bot = new Discord.Client();
 const client = new Discord.Client();
 const prefix = '+'
 
-  console.log('')
-  console.log('')
-  console.log('')
-  console.log(`! [ " ${client.guilds.size} " ]`);
-  console.log(`! [ " ${client.users.size} " ]`);
-  console.log(`! [ " ${client.channels.size} " ]`);
-  console.log('╚[════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════]╗')
-  console.log(' Bot Is Online')
-  console.log('╚[════════════]╝')
-  console.log('')
-  console.log('')
-});
+
 client.on('ready', () => {
      client.user.setActivity(" M.A.R |+help",{type: 'WATCHING'})
 
