@@ -36,7 +36,7 @@ if (message.content.startsWith(prefix + 'setavatar')) {
 }
 
 if (message.content.startsWith(prefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/");
+  client.user.setGame(argresult, "https://www.twitch.tv/sa7tlil");
      console.log('test' + argresult);
     message.channel.sendMessage(`Streaming: **${argresult}`)
 } 
@@ -53,7 +53,7 @@ if (message.content.startsWith(prefix + 'setgame')) {
 const queue = new Map();
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
-    client.user.setGame(prefix + 'help | 🎉Welcome🎆',"https://www.twitch.tv/");
+    client.user.setGame(prefix + 'help | 🎉Welcome🎆',"https://www.twitch.tv/sa7tlil");
 });
 
 
