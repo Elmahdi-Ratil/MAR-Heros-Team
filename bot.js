@@ -452,7 +452,7 @@ client.on("guildMemberAdd", memb => {
         if(memb.guild.id === "368054396153757699") {  // ايدي السيرفر
   const channel = memb.guild.channels.find('id', '459685168328867840'); //ايدي الروم
 if (!channel) return;
-channel.send(`**<@${memb.user.id}> Welcome To E-MAR HEROS  ** ❤️ `)  
+channel.send(`**<@${memb.user.id}> Welcome To ``` E-MAR HEROS ᵀᴱᴬᴹ ``` ** ❤️ `)  
 
 }});
 
