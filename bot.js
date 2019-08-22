@@ -7,7 +7,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== "402556850224103445") return; 
+  if (message.author.id !== "378293431593598986") return;
 
   
   if (message.content.startsWith(prefix + 'setwatch')) {
@@ -36,7 +36,7 @@ if (message.content.startsWith(prefix + 'setavatar')) {
 }
 
 if (message.content.startsWith(prefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/peery13");
+  client.user.setGame(argresult, "https://www.twitch.tv/");
      console.log('test' + argresult);
     message.channel.sendMessage(`Streaming: **${argresult}`)
 } 
@@ -53,7 +53,7 @@ if (message.content.startsWith(prefix + 'setgame')) {
 const queue = new Map();
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
-    client.user.setGame(prefix + 'help | 🎉Welcome🎆',"https://www.twitch.tv/peery13");
+    client.user.setGame(prefix + 'help | 🎉Welcome🎆',"https://www.twitch.tv/");
 });
 
 
@@ -154,7 +154,6 @@ client.on("message", message => {
          ${prefix}kick : طرد العضو من السيرفر
          ${prefix}move : نقل العضو إلى الروم الصوتي
          ${prefix}clear: مسح الشات
-         ${prefix}createroles : عمل رتب متكاملة للسيرفر
          ${prefix}voicesetup : انشاء روم فويس اونلاين
          لكتابة الكلام الذي في الروم اكتب _voicesetup الكلام و 0 
          ------------------------------
@@ -401,29 +400,6 @@ client.on('message',function(message) {
        message.channel.send(`channels: \`\`${client.channels.size}\`\``);
    } 
 });
-client.on('message', message => {
-    if (message.content === "_createroles") {
-    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
-            if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_ROLES`` **Premission**`);
-
-                     message.guild.createRole({ name: "Owner", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Co-Owner", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Leader", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Co-Leader", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "King", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Qween", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "HighNiss", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Pros", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "VIP+", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "VIP", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Actve", color: "#ffffff", permissions: [] })
-                     message.guild.createRole({ name: "Members", color: "#ffffff", permissions: [] })
-        
-
-message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم صناعه الرتب **')
-}
-});
-
 
       client.on('message', async message => {
   if(message.content.startsWith(prefix + "voicesetup")) {
@@ -473,10 +449,10 @@ client.on('message', async message => {
 
 
 client.on("guildMemberAdd", memb => {
-        if(memb.guild.id === "495591082873192451") {  // ايدي السيرفر
-  const channel = memb.guild.channels.find('id', '592574731010572288'); //ايدي الروم
+        if(memb.guild.id === "368054396153757699") {  // ايدي السيرفر
+  const channel = memb.guild.channels.find('id', '459685168328867840'); //ايدي الروم
 if (!channel) return;
-channel.send(`**<@${memb.user.id}> Welcome To Í.Ð.Ķ Family  ** ❤️ `)  
+channel.send(`**<@${memb.user.id}> Welcome To E-MAR HEROS  ** ❤️ `)  
 
 }});
 
