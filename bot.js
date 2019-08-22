@@ -458,6 +458,27 @@ channel.send(`**<@${memb.user.id}> Welcome To ``` E-MAR HEROS ᵀᴱᴬᴹ ``` *
 
 
 
+
+const voiceChannel = '596381122657779722'; 
+
+const membersSize = (client) => {
+ return client.channels.filter(c => c.type === "voice").map(c => c.members.size).reduce((a,b) => {return a + b}, 0);
+}
+
+
+client.on('ready', () => {
+client.channels.get(voiceChannel).setName(`M.A.R Voice Online: [${membersSize(client)}]`)
+}); 
+
+client.on('voiceStateUpdate', () => {
+client.channels.get(voiceChannel).setName(`M.A.R Voice Online: [${membersSize(client)}]`)
+})
+
+
+
+
+
+
 //////////////////////////////////////////////////////////////////////
 
 
